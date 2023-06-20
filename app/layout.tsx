@@ -1,6 +1,7 @@
 import Head from "next/head";
 import ChakraUiProvider from "./chakra-ui-provider";
 import "./globals.css";
+import SidebarWithHeader from "./components/sidebar";
 
 export const metadata = {
   title: "Mitec",
@@ -18,7 +19,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <body>
-        <ChakraUiProvider>{children}</ChakraUiProvider>
+        <ChakraUiProvider>
+          <SidebarWithHeader>{children}</SidebarWithHeader>
+        </ChakraUiProvider>
       </body>
     </html>
   );

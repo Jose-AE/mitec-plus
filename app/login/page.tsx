@@ -26,6 +26,7 @@ import { MdLockOutline } from "react-icons/md";
 import MitecLogo from "../components/logo";
 import { useState } from "react";
 import Footer from "./footer";
+import axios from "axios";
 
 export default function page() {
   const router = useRouter();

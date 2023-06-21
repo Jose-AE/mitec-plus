@@ -2,6 +2,7 @@
 
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
+import SidebarWithHeader from "./components/sidebar";
 
 export default function ChakraUiProvider({
   children,
@@ -10,7 +11,13 @@ export default function ChakraUiProvider({
 }) {
   return (
     <CacheProvider>
-      <ChakraProvider>{children}</ChakraProvider>
+      <ChakraProvider>
+        {window.location.pathname !== "/login" ? (
+          <SidebarWithHeader>{children}</SidebarWithHeader>
+        ) : (
+          children
+        )}
+      </ChakraProvider>
     </CacheProvider>
   );
 }

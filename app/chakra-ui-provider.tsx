@@ -12,11 +12,7 @@ export default function ChakraUiProvider({
   return (
     <CacheProvider>
       <ChakraProvider>
-        {window.location.pathname !== "/login" ? (
-          <SidebarWithHeader>{children}</SidebarWithHeader>
-        ) : (
-          children
-        )}
+        {true ? <SidebarWithHeader>{children}</SidebarWithHeader> : children}
       </ChakraProvider>
     </CacheProvider>
   );

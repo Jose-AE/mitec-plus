@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
-import TodaysClasses from "./components/TodaysClasses";
+import TodaysClasses from "../components/TodaysClasses";
 function App() {
   return (
     <>

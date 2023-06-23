@@ -16,7 +16,7 @@ import { SingleDatepicker } from "chakra-dayzed-datepicker";
 import { BiMap, BiTimeFive } from "react-icons/bi";
 
 const ep =
-  '{"iP":"03420355","tU":"Alumno TecMty","jW":"eyJraWQiOiJoczI1Ni1rZXkiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBMDEwMjg0OTMiLCJzdWIiOiJBMDEwMjg0OTNAdGVjLm14IiwiYXVkIjoiQWx1bW5vIFRlY010eSIsImV4cCI6MTY4NzQ4OTQ4NCwiaWF0IjoxNjg3NDg1ODg0LCJ0ZWMtaWQtcGVyc29uYSI6IjAzNDIwMzU1In0.h0W_a9SQkl6uWzuX2Lkb2Tan7OjnYPcvI6F1oEwP55E","oA":"AAIgMWVmZGZmNGYyNWQ1YTZiYzhmODVjZjRhZjE0NmEyYjci7O8w8VPxnWgq58I0iUliZhgO2LRwJ4UZC0OcPzSor0JNmkw0dTgeIKKefw2rSJC4PRB8uhapQudtd0g_bN5HCmEgv6iq0geY89yghBjgcf9v7bZk70s1VHJAAIq-_y0","ex":1687489200}';
+  '{"iP":"03420355","tU":"Alumno TecMty","jW":"eyJraWQiOiJoczI1Ni1rZXkiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBMDEwMjg0OTMiLCJzdWIiOiJBMDEwMjg0OTNAdGVjLm14IiwiYXVkIjoiQWx1bW5vIFRlY010eSIsImV4cCI6MTY4NzQ5ODU3MSwiaWF0IjoxNjg3NDk0OTcxLCJ0ZWMtaWQtcGVyc29uYSI6IjAzNDIwMzU1In0.N90wTxJs8bNRpWhc7uIDPxcx865tIvXc_vma9PfnP08","oA":"AAIgMWVmZGZmNGYyNWQ1YTZiYzhmODVjZjRhZjE0NmEyYjd3urtGFutEiwY3CIEiOw_iQLc8r-orOeAUjGkio4RCdoceSBV-kl1A_IByXMv1zt5e1BRFUYUIqsppKSuQ0TSuNvKktqb95RSo6601jYqPtXU8aizkjiW_yX_yNu16qLs","ex":1687496400}';
 const c1 = JSON.parse(ep).oA;
 const c2 = JSON.parse(ep).jW;
 
@@ -69,23 +69,15 @@ export default function TodaysClasses() {
   }, []);
 
   return (
-    <Box
-      h={`calc(100vh - ${200}px)`}
-      overflowY="auto"
-      sx={{
-        "::-webkit-scrollbar": {
-          display: "none",
-        },
-      }}
-    >
-      <Flex alignItems="center" p="10px">
-        <Heading mr="10px" size={{ base: "lg" }}>
+    <>
+      <Flex h="20%" alignItems="center" p="10px">
+        <Heading mr="10px" size={{ base: "sm", md: "lg" }}>
           Tus clases de hoy
         </Heading>
         <SingleDatepicker
           propsConfigs={{
             inputProps: {
-              w: "130px",
+              w: "135px",
               borderColor: "blackAlpha.200",
               borderWidth: "2px",
             },
@@ -95,103 +87,103 @@ export default function TodaysClasses() {
           onDateChange={setDate}
         />
       </Flex>
+      <Box
+        h="80%"
+        overflowY="auto"
+        sx={{
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+      >
+        {classes.length > 0 ? (
+          (() => {
+            const filteredClasses = classes
+              .filter((c, i, arr) => {
+                if (
+                  arr.some(
+                    (o, j) =>
+                      j < i &&
+                      o.classStartDate === c.classStartDate &&
+                      o.id === c.id
+                  ) === true
+                ) {
+                  return false;
+                }
 
-      {classes.length > 0 ? (
-        (() => {
-          const filteredClasses = classes
-            .filter((c, i, arr) => {
-              if (
-                arr.some(
-                  (o, j) =>
-                    j < i &&
-                    o.classStartDate === c.classStartDate &&
-                    o.id === c.id
-                ) === true
-              ) {
-                return false;
-              }
+                const classStartDate = new Date(c.classStartDate);
+                const classEndDate = new Date(c.classEndDate);
 
-              const classStartDate = new Date(c.classStartDate);
-              const classEndDate = new Date(c.classEndDate);
+                // Check if the current date is between the start and end dates of the class
+                return (
+                  date >= classStartDate &&
+                  date <= classEndDate &&
+                  c.days.includes(
+                    ["SU", "M", "T", "W", "R", "F", "SA"][date.getDay()]
+                  )
+                );
+              })
+              .sort((a, b) => {
+                const startTimeA = a.classStartTime;
+                const startTimeB = b.classStartTime;
 
-              // Check if the current date is between the start and end dates of the class
+                // Compare the start times
+                if (startTimeA < startTimeB) {
+                  return -1;
+                }
+                if (startTimeA > startTimeB) {
+                  return 1;
+                }
+
+                return 0;
+              });
+
+            if (filteredClasses.length === 0) {
               return (
-                date >= classStartDate &&
-                date <= classEndDate &&
-                c.days.includes(
-                  ["SU", "M", "T", "W", "R", "F", "SA"][date.getDay()]
-                )
+                <Center h="100%">
+                  <Text>No tienes clases!</Text>
+                </Center>
               );
-            })
-            .sort((a, b) => {
-              const startTimeA = a.classStartTime;
-              const startTimeB = b.classStartTime;
+            }
 
-              // Compare the start times
-              if (startTimeA < startTimeB) {
-                return -1;
-              }
-              if (startTimeA > startTimeB) {
-                return 1;
-              }
-
-              return 0;
-            });
-
-          if (filteredClasses.length === 0) {
-            return (
-              <Flex justifyContent="center">
-                <Text>No tienes clases!</Text>
+            return filteredClasses.map((c, i) => (
+              <Flex
+                borderWidth="1px"
+                borderColor="gray.200"
+                key={i}
+                justifyContent="space-between"
+                alignItems="center"
+                borderRadius="md"
+                w="100%"
+                h="70px"
+                bg={"white"}
+                padding={5}
+                direction="row"
+                mb="10px"
+              >
+                <Text fontSize={{ base: "12px", md: "16px" }} as="b" flex="2">
+                  {c.name}
+                </Text>
+                <BiMap />
+                <Text ml="5px" fontSize={{ base: "12px", md: "16px" }} flex="1">
+                  {c.classBuilding + " " + c.classroom}
+                </Text>
+                <BiTimeFive />
+                <Text ml="5px" fontSize={{ base: "12px", md: "16px" }}>
+                  {c.classStartTime + "-" + c.classEndTime}
+                </Text>
               </Flex>
-            );
-          }
-
-          return filteredClasses.map((c, i) => (
-            <Flex
-              borderWidth="1px"
-              borderColor="gray.200"
-              key={i}
-              justifyContent="space-between"
-              alignItems="center"
-              borderRadius="md"
-              w="100%"
-              h="70px"
-              bg={"white"}
-              padding={5}
-              direction="row"
-              mb="10px"
-            >
-              <Text fontSize={{ base: "12px", md: "16px" }} as="b" flex="2">
-                {c.name}
-              </Text>
-              <BiMap />
-              <Text ml="5px" fontSize={{ base: "12px", md: "16px" }} flex="1">
-                {c.classBuilding + " " + c.classroom}
-              </Text>
-              <BiTimeFive />
-              <Text ml="5px" fontSize={{ base: "12px", md: "16px" }}>
-                {c.classStartTime + "-" + c.classEndTime}
-              </Text>
-            </Flex>
-          ));
-        })()
-      ) : (
-        <Skeleton>
-          <Flex
-            borderWidth="1px"
-            borderColor="gray.200"
-            justifyContent="space-between"
-            alignItems="center"
-            borderRadius="md"
-            w="100%"
-            h="70px"
-            bg={"white"}
-            padding={5}
-            direction="row"
-            mb="10px"
-          ></Flex>
-        </Skeleton>
-      )}
-    </Box>
+            ));
+          })()
+        ) : (
+          <>
+            <Skeleton h="70px" mb="10px" />
+            <Skeleton h="70px" mb="10px" />
+            <Skeleton h="70px" mb="10px" />
+            <Skeleton h="70px" mb="10px" />
+          </>
+        )}
+      </Box>
+    </>
   );
 }

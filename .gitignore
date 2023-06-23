@@ -8,6 +8,8 @@
 # testing
 /coverage
 test.js
+gradesRes.js
+classesRes.js
 
 # next.js
 /.next/
@@ -15,6 +17,7 @@ test.js
 
 # production
 /build
+.env
 
 # misc
 .DS_Store

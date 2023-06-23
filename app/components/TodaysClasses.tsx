@@ -10,15 +10,27 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import ClassInterface from "../interfaces/ClassInterface";
 import axios from "axios";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
 import { BiMap, BiTimeFive } from "react-icons/bi";
 
-const ep =
-  '{"iP":"03420355","tU":"Alumno TecMty","jW":"eyJraWQiOiJoczI1Ni1rZXkiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBMDEwMjg0OTMiLCJzdWIiOiJBMDEwMjg0OTNAdGVjLm14IiwiYXVkIjoiQWx1bW5vIFRlY010eSIsImV4cCI6MTY4NzQ5ODU3MSwiaWF0IjoxNjg3NDk0OTcxLCJ0ZWMtaWQtcGVyc29uYSI6IjAzNDIwMzU1In0.N90wTxJs8bNRpWhc7uIDPxcx865tIvXc_vma9PfnP08","oA":"AAIgMWVmZGZmNGYyNWQ1YTZiYzhmODVjZjRhZjE0NmEyYjd3urtGFutEiwY3CIEiOw_iQLc8r-orOeAUjGkio4RCdoceSBV-kl1A_IByXMv1zt5e1BRFUYUIqsppKSuQ0TSuNvKktqb95RSo6601jYqPtXU8aizkjiW_yX_yNu16qLs","ex":1687496400}';
+const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
 const c1 = JSON.parse(ep).oA;
 const c2 = JSON.parse(ep).jW;
+
+interface ClassInterface {
+  id: string;
+  name: string;
+  classStartDate: string;
+  classEndDate: string;
+  classStartTime: string;
+  classEndTime: string;
+  days: string[];
+  group: string;
+  classBuilding: string;
+  classroom: string;
+  teachers: string[];
+}
 
 export default function TodaysClasses() {
   const [date, setDate] = useState<Date>(new Date());
@@ -27,12 +39,18 @@ export default function TodaysClasses() {
   useEffect(() => {
     axios
       .get(
-        "https://apigateway.tec.mx/tec-de-monterrey/api/tec/alumnos/A01028493/horario-de-cursos?claveEjercicioAcademico=202311",
+        (process.env.NEXT_PUBLIC_API_CLASSES as string).replace(
+          "PERIOD",
+          `${new Date().getFullYear()}${
+            new Date().getMonth() >= 7 && new Date().getMonth() <= 11
+              ? "13"
+              : "11"
+          }`
+        ),
         {
           headers: {
             accept: "application/vnd.api+json",
             authorization: `Bearer ${c1}`,
-
             "x-auth-jwt": c2,
           },
         }

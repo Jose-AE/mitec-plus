@@ -1,7 +1,8 @@
 "use client";
 
-import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import TodaysClasses from "./components/TodaysClasses";
+import Grades from "./components/Grades";
 function App() {
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
         gap={4}
       >
         <GridItem
+          maxH={{ base: "500px", md: "none" }}
           p="10px"
           borderRadius="lg"
           borderWidth="2px"
@@ -19,10 +21,16 @@ function App() {
         >
           <TodaysClasses />
         </GridItem>
+
         <GridItem
+          maxH={{ base: "500px", md: "none" }}
+          p="10px"
+          borderRadius="lg"
+          borderWidth="2px"
           gridArea={{ base: "2 / 1 / 3 / 2", md: "1 / 4 / 5 / 6" }}
-          bg="#50A7FF"
-        ></GridItem>
+        >
+          <Grades />
+        </GridItem>
 
         <GridItem
           gridArea={{ base: "3 / 1 / 4 / 2", md: "3 / 1 / 5 / 4" }}

@@ -1,13 +1,22 @@
 "use client";
 
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  Heading,
+  Skeleton,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import ClassInterface from "../interfaces/ClassInterface";
 import axios from "axios";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
+import { BiMap, BiTimeFive } from "react-icons/bi";
 
 const ep =
-  '{"iP":"03420355","tU":"Alumno TecMty","jW":"eyJraWQiOiJoczI1Ni1rZXkiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBMDEwMjg0OTMiLCJzdWIiOiJBMDEwMjg0OTNAdGVjLm14IiwiYXVkIjoiQWx1bW5vIFRlY010eSIsImV4cCI6MTY4NzQxMzcyMywiaWF0IjoxNjg3NDEwMTIzLCJ0ZWMtaWQtcGVyc29uYSI6IjAzNDIwMzU1In0.kgYTIrlGl4Xb43K5Bubw-9v2OfaZfarbRtAMDlGUj6E","oA":"AAIgMWVmZGZmNGYyNWQ1YTZiYzhmODVjZjRhZjE0NmEyYjfaZWyWgYSd_ebpg9gdq80aFlvbJfPBFYQ7h6dIhxo20vi3JANuK5j0bbSHgMH7JaDHTJ9YPKI84QgtD_eY0h6bYXzxFObn-wm6jyF6IvBzXcM0Z_hFCeeGciHuvkotNJs","ex":1687413600}';
+  '{"iP":"03420355","tU":"Alumno TecMty","jW":"eyJraWQiOiJoczI1Ni1rZXkiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBMDEwMjg0OTMiLCJzdWIiOiJBMDEwMjg0OTNAdGVjLm14IiwiYXVkIjoiQWx1bW5vIFRlY010eSIsImV4cCI6MTY4NzQ4OTQ4NCwiaWF0IjoxNjg3NDg1ODg0LCJ0ZWMtaWQtcGVyc29uYSI6IjAzNDIwMzU1In0.h0W_a9SQkl6uWzuX2Lkb2Tan7OjnYPcvI6F1oEwP55E","oA":"AAIgMWVmZGZmNGYyNWQ1YTZiYzhmODVjZjRhZjE0NmEyYjci7O8w8VPxnWgq58I0iUliZhgO2LRwJ4UZC0OcPzSor0JNmkw0dTgeIKKefw2rSJC4PRB8uhapQudtd0g_bN5HCmEgv6iq0geY89yghBjgcf9v7bZk70s1VHJAAIq-_y0","ex":1687489200}';
 const c1 = JSON.parse(ep).oA;
 const c2 = JSON.parse(ep).jW;
 
@@ -70,11 +79,13 @@ export default function TodaysClasses() {
       }}
     >
       <Flex alignItems="center" p="10px">
-        <Heading mr="10px">Tus clases de hoy</Heading>
+        <Heading mr="10px" size={{ base: "lg" }}>
+          Tus clases de hoy
+        </Heading>
         <SingleDatepicker
           propsConfigs={{
             inputProps: {
-              w: "120px",
+              w: "130px",
               borderColor: "blackAlpha.200",
               borderWidth: "2px",
             },
@@ -85,69 +96,102 @@ export default function TodaysClasses() {
         />
       </Flex>
 
-      {classes
-        .filter((c, i, arr) => {
-          if (
-            arr.some(
-              (o, j) =>
-                j < i && o.classStartDate === c.classStartDate && o.id === c.id
-            ) === true
-          ) {
-            return false;
+      {classes.length > 0 ? (
+        (() => {
+          const filteredClasses = classes
+            .filter((c, i, arr) => {
+              if (
+                arr.some(
+                  (o, j) =>
+                    j < i &&
+                    o.classStartDate === c.classStartDate &&
+                    o.id === c.id
+                ) === true
+              ) {
+                return false;
+              }
+
+              const classStartDate = new Date(c.classStartDate);
+              const classEndDate = new Date(c.classEndDate);
+
+              // Check if the current date is between the start and end dates of the class
+              return (
+                date >= classStartDate &&
+                date <= classEndDate &&
+                c.days.includes(
+                  ["SU", "M", "T", "W", "R", "F", "SA"][date.getDay()]
+                )
+              );
+            })
+            .sort((a, b) => {
+              const startTimeA = a.classStartTime;
+              const startTimeB = b.classStartTime;
+
+              // Compare the start times
+              if (startTimeA < startTimeB) {
+                return -1;
+              }
+              if (startTimeA > startTimeB) {
+                return 1;
+              }
+
+              return 0;
+            });
+
+          if (filteredClasses.length === 0) {
+            return (
+              <Flex justifyContent="center">
+                <Text>No tienes clases!</Text>
+              </Flex>
+            );
           }
 
-          const classStartDate = new Date(c.classStartDate);
-          const classEndDate = new Date(c.classEndDate);
-
-          // Check if the current date is between the start and end dates of the class
-          return (
-            date >= classStartDate &&
-            date <= classEndDate &&
-            c.days.includes(
-              ["SU", "M", "T", "W", "R", "F", "SA"][date.getDay()]
-            )
-          );
-        })
-        .sort((a, b) => {
-          const startTimeA = a.classStartTime;
-          const startTimeB = b.classStartTime;
-
-          // Compare the start times
-          if (startTimeA < startTimeB) {
-            return -1;
-          }
-          if (startTimeA > startTimeB) {
-            return 1;
-          }
-
-          return 0;
-        })
-        .map((c, i) => (
+          return filteredClasses.map((c, i) => (
+            <Flex
+              borderWidth="1px"
+              borderColor="gray.200"
+              key={i}
+              justifyContent="space-between"
+              alignItems="center"
+              borderRadius="md"
+              w="100%"
+              h="70px"
+              bg={"white"}
+              padding={5}
+              direction="row"
+              mb="10px"
+            >
+              <Text fontSize={{ base: "12px", md: "16px" }} as="b" flex="2">
+                {c.name}
+              </Text>
+              <BiMap />
+              <Text ml="5px" fontSize={{ base: "12px", md: "16px" }} flex="1">
+                {c.classBuilding + " " + c.classroom}
+              </Text>
+              <BiTimeFive />
+              <Text ml="5px" fontSize={{ base: "12px", md: "16px" }}>
+                {c.classStartTime + "-" + c.classEndTime}
+              </Text>
+            </Flex>
+          ));
+        })()
+      ) : (
+        <Skeleton>
           <Flex
             borderWidth="1px"
             borderColor="gray.200"
-            key={i}
             justifyContent="space-between"
             alignItems="center"
             borderRadius="md"
             w="100%"
-            h="60px"
+            h="70px"
             bg={"white"}
             padding={5}
             direction="row"
             mb="10px"
-          >
-            <Text fontSize={{ base: "12px", md: "16px" }} as="b" flex="2">
-              {c.name}
-            </Text>
-            <Text fontSize={{ base: "12px", md: "16px" }} flex="1">
-              {c.classBuilding + " " + c.classroom}
-            </Text>
-            <Text fontSize={{ base: "12px", md: "16px" }}>
-              {c.classStartTime + " a " + c.classEndTime}
-            </Text>
-          </Flex>
-        ))}
+          ></Flex>
+        </Skeleton>
+      )}
     </Box>
   );
 }

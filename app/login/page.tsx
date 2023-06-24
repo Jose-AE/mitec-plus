@@ -95,7 +95,7 @@ export default function page() {
         .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/user")
         .then((res) => {
           setLoading(false);
-          console.log("moving to dash");
+          router.push("/dashboard");
         })
         .catch((error) => {
           setLoading(false);
@@ -125,6 +125,8 @@ export default function page() {
             <FormControl>
               <FormLabel>Cookie</FormLabel>
               <Input
+                type="text"
+                autoComplete="off"
                 isDisabled={loading}
                 onChange={(e) => {
                   setUserCookie(e.target.value);
@@ -220,7 +222,6 @@ export default function page() {
                 <Button
                   onClick={() => {
                     onOpen();
-                    //router.push("/");
                   }}
                   bg={"blue.400"}
                   color={"white"}

@@ -12,32 +12,38 @@ import {
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-interface GradesInterface {
-  periods: string[];
-  grades: {
-    id: string;
-    name: string;
-    group: string;
-    period: string;
-    grade: string;
-  }[];
+interface GradeInterface {
+  id: string;
+  name: string;
+  group: string;
+  period: string;
+  grade: string;
 }
+
+const PeriodEnum: { [key: string]: string } = {
+  "13": "Ago-Dic",
+  "12": "Verano",
+  "11": "Feb-Jun",
+  "10": "Invierno",
+};
 
 export default function Grades() {
   const [periods, setPeriods] = useState<string[]>([]);
   const [period, setPeriod] = useState<string>("");
-  const [grades, setGrades] = useState<GradesInterface[]>([]);
+  const [grades, setGrades] = useState<GradeInterface[]>([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/grades")
+      .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades")
       .then((response) => {
+        setPeriods(response.data.periods);
+        setGrades(response.data.grades);
         console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [period]);
+  }, []);
 
   return (
     <>
@@ -46,15 +52,15 @@ export default function Grades() {
           Calificaciones
         </Heading>
         <Select
-          placeholder="Todos los semestres"
+          borderWidth="2px"
+          placeholder="Todos los periodos"
           onChange={(e) => {
             setPeriod(e.target.value);
           }}
         >
-          {periods.map((name, i) => (
-            <option key={i} value={name}>
-              {name.slice(0, 4) +
-                (name.slice(4, 6) == "13" ? " Ago-Dic" : " Feb-Jun")}
+          {periods.map((period, i) => (
+            <option key={i} value={period}>
+              {period.slice(0, 4) + " " + PeriodEnum[period.slice(4, 6)]}
             </option>
           ))}
         </Select>
@@ -69,40 +75,52 @@ export default function Grades() {
         }}
       >
         {grades.length > 0 ? (
-          grades.map((g, i) => (
-            <Flex
-              borderWidth="1px"
-              borderColor="gray.200"
-              key={i}
-              justifyContent="space-between"
-              alignItems="center"
-              borderRadius="md"
-              w="100%"
-              h="70px"
-              bg={"white"}
-              padding={5}
-              direction="row"
-              mb="10px"
-            >
-              <Text fontSize={{ base: "12px", md: "16px" }} as="b" flex="2">
-                {g.name.replace(/\([^()]*\)/g, "")}
-              </Text>
+          grades
+            .filter((g) => {
+              if (period === "") {
+                return true;
+              } else {
+                return g.period === period;
+              }
+            })
+            .map((g, i) => (
+              <Flex
+                borderWidth="1px"
+                borderColor="gray.200"
+                key={i}
+                justifyContent="space-between"
+                alignItems="center"
+                borderRadius="md"
+                w="100%"
+                h="70px"
+                bg={"white"}
+                padding={5}
+                direction="row"
+                mb="10px"
+              >
+                <Text fontSize={{ base: "12px", md: "16px" }} as="b" flex="2">
+                  {g.name}
+                </Text>
 
-              {g.grade !== null ? (
-                <Badge colorScheme={g.grade >= 70 ? "green" : "red"}>
-                  <Text ml="5px" fontSize={{ base: "12px", md: "16px" }}>
-                    {g.grade}/100
-                  </Text>
-                </Badge>
-              ) : (
-                <Badge>
-                  <Text ml="5px" fontSize={{ base: "12px", md: "16px" }}>
-                    Pending
-                  </Text>
-                </Badge>
-              )}
-            </Flex>
-          ))
+                {g.grade !== "NA" ? (
+                  <Badge
+                    colorScheme={
+                      Number(g.grade) >= 70 || g.grade === "SA"
+                        ? "green"
+                        : "red"
+                    }
+                  >
+                    <Text fontSize={{ base: "12px", md: "16px" }}>
+                      {Number(g.grade) > 0 ? `${g.grade}/100` : g.grade}
+                    </Text>
+                  </Badge>
+                ) : (
+                  <Badge>
+                    <Text fontSize={{ base: "12px", md: "16px" }}>Pending</Text>
+                  </Badge>
+                )}
+              </Flex>
+            ))
         ) : (
           <>
             {Array.from({ length: 20 }).map((_, index) => (

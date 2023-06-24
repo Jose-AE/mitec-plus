@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
   await axios
     .get(
-      (process.env.NEXT_PUBLIC_API_GRADES_old as string).replace(
+      (process.env.NEXT_PUBLIC_API_CLASS_NAMES as string).replace(
         "PERIOD",
         true ? "" : `?ejercicio-academico=${202311}`
       ),

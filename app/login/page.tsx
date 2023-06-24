@@ -95,10 +95,10 @@ export default function page() {
         .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/user")
         .then((res) => {
           setLoading(false);
-          setCookie(
-            "user",
-            JSON.stringify({ name: res.data.name, id: res.data.id })
-          );
+          setUserCookie("");
+          localStorage.setItem("user_id", res.data.id);
+          localStorage.setItem("user_name", res.data.name);
+
           router.push("/dashboard");
         })
         .catch((error) => {

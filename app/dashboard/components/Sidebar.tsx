@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import {
   IconButton,
   Avatar,
@@ -44,7 +44,8 @@ import MitecLogo from "./MitecLogo";
 
 import { BiHomeAlt2, BiIdCard, BiCalendar, BiCategory } from "react-icons/bi";
 import { TbSchool } from "react-icons/tb";
-import { getCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 
 interface LinkItemProps {
   navTo: string;
@@ -53,7 +54,7 @@ interface LinkItemProps {
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: "Inicio", navTo: "/", icon: BiHomeAlt2 },
-  { name: "Mi Agenda", navTo: "/", icon: BiCalendar },
+  { name: "Mi Agenda", navTo: "/schedule", icon: BiCalendar },
   { name: "Mi Inscripción", navTo: "/", icon: TbSchool },
   { name: "Servicios", navTo: "/", icon: BiCategory },
 ];
@@ -161,6 +162,17 @@ interface MobileProps extends FlexProps {
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const router = useRouter();
+
+  const [name, setName] = useState("");
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setName(localStorage.getItem("user_name") || "");
+      setId(localStorage.getItem("user_id") || "");
+    }
+  });
 
   return (
     <Flex
@@ -209,11 +221,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">
-                    {JSON.parse(getCookie("user") as string).name}
-                  </Text>
+                  <Text fontSize="sm">{name}</Text>
                   <Text fontSize="xs" color="gray.600">
-                    {JSON.parse(getCookie("user") as string).id}
+                    {id}
                   </Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>
@@ -236,7 +246,14 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               </Button>
 
               <MenuDivider />
-              <MenuItem>Cerrar Sesión</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  deleteCookie("token");
+                  router.push("/login");
+                }}
+              >
+                Cerrar Sesión
+              </MenuItem>
             </MenuList>
           </Menu>
         </Flex>

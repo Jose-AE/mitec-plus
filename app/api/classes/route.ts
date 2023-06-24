@@ -5,7 +5,7 @@ const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
 const c1 = JSON.parse(ep).oA;
 const c2 = JSON.parse(ep).jW;
 
-interface ClassesInterface {
+interface ClassInterface {
   id: string;
   name: string;
   classStartDate: string;
@@ -21,7 +21,7 @@ interface ClassesInterface {
 
 export async function GET(request: Request) {
   let res;
-  let resData: ClassesInterface[] = [];
+  let resData: ClassInterface[] = [];
 
   await axios
     .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades")
@@ -38,9 +38,9 @@ export async function GET(request: Request) {
           .then((response) => {
             for (let curso of response.data.data) {
               for (let horario of curso.attributes.horario) {
-                const temp: ClassesInterface = {
-                  id: curso.id,
-                  name: curso.attributes.descripcionMateria,
+                const temp: ClassInterface = {
+                  id: curso.relationships["materia-impartida"].data.id,
+                  name: "NA",
                   classStartDate: horario.fechaInicioClase,
                   classEndDate: horario.fechaFinClase,
                   classStartTime: horario.horaInicioClase,
@@ -76,6 +76,14 @@ export async function GET(request: Request) {
                   if (foundTeacher) {
                     t.name = foundTeacher.attributes.nombreCompleto;
                   }
+                }
+
+                const foundClass = response.data.included.find(
+                  (item: any) => item.type === "materias" && item.id === temp.id
+                );
+
+                if (foundClass) {
+                  temp.name = foundClass.attributes.descripcionMateria;
                 }
 
                 resData.push(temp);

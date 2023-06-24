@@ -14,10 +14,6 @@ import axios from "axios";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
 import { BiMap, BiTimeFive } from "react-icons/bi";
 
-const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
-const c1 = JSON.parse(ep).oA;
-const c2 = JSON.parse(ep).jW;
-
 interface ClassInterface {
   id: string;
   name: string;
@@ -29,7 +25,7 @@ interface ClassInterface {
   group: string;
   classBuilding: string;
   classroom: string;
-  teachers: string[];
+  teachers: { id: string; name: string }[];
 }
 
 export default function TodaysClasses() {
@@ -38,38 +34,9 @@ export default function TodaysClasses() {
 
   useEffect(() => {
     axios
-      .get(process.env.NEXT_PUBLIC_API_CLASSES as string, {
-        headers: {
-          accept: "application/vnd.api+json",
-          authorization: `Bearer ${c1}`,
-          "x-auth-jwt": c2,
-        },
-      })
-      .then((response) => {
-        let formattedClasses: ClassInterface[] = [];
-
-        for (let i = 0; i < response.data.data.length; i++) {
-          const d = response.data.data[i];
-
-          for (let h = 0; h < d.attributes.horario.length; h++) {
-            formattedClasses.push({
-              id: response.data.included[i].id,
-              name: response.data.included[i].attributes.descripcionMateria,
-              classStartDate: d.attributes.horario[h].fechaInicioClase,
-              classEndDate: d.attributes.horario[h].fechaFinClase,
-              classStartTime: d.attributes.horario[h].horaInicioClase,
-              classEndTime: d.attributes.horario[h].horaFinClase,
-              days: d.attributes.horario[h].dias,
-              group: d.attributes.horario[h].grupo,
-              classBuilding: d.attributes.horario[h].descripcionEdificio,
-              classroom: d.attributes.horario[h].claveSalon,
-              teachers: [
-                response.data.data[i].relationships["profesor-titular"].data.id,
-              ],
-            });
-          }
-        }
-        setClasses(formattedClasses);
+      .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
+      .then((res) => {
+        setClasses(res.data);
       })
       .catch((error) => {
         console.error(error);

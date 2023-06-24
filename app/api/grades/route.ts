@@ -1,9 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
-
-const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
-const c1 = JSON.parse(ep).oA;
-const c2 = JSON.parse(ep).jW;
 
 interface GradesInterface {
   periods: string[];
@@ -16,19 +12,38 @@ interface GradesInterface {
   }[];
 }
 
-export async function GET(request: Request) {
+interface TokenInterface {
+  JWT: string;
+  oAuth: string;
+}
+
+export async function GET(req: NextRequest) {
   let errorMsg: string[] = [];
   let resData: GradesInterface = { periods: [], grades: [] };
 
+  let token: TokenInterface | undefined;
+  const tokenString = req.cookies.get("token")?.value;
+  if (tokenString !== undefined) {
+    try {
+      token = JSON.parse(tokenString);
+    } catch (err: any) {
+      errorMsg.push(err.message);
+    }
+  }
+  const userId = token?.JWT
+    ? JSON.parse(Buffer.from(token.JWT.split(".")[1], "base64").toString()).iss
+    : "";
+
   await axios
-    .get(process.env.API_CLASS_NAMES as string, {
+    .get((process.env.API_CLASS_NAMES as string).replace("A0000", userId), {
       headers: {
         accept: "application/vnd.api+json",
-        authorization: `Bearer ${c1}`,
-        "x-auth-jwt": c2,
+        authorization: `Bearer ${token?.oAuth}`,
+        "x-auth-jwt": token?.JWT,
       },
     })
     .then((response) => {
+      //console.log(response.data);
       const allPeriods: string[] = [];
       for (let data of response.data.data) {
         const splitName = data.attributes.descripcionGrupo.split(" (");
@@ -51,13 +66,18 @@ export async function GET(request: Request) {
 
   for (let period of resData.periods) {
     await axios
-      .get((process.env.API_GRADES as string).replace("PERIOD", period), {
-        headers: {
-          accept: "application/vnd.api+json",
-          authorization: `Bearer ${c1}`,
-          "x-auth-jwt": c2,
-        },
-      })
+      .get(
+        (process.env.API_GRADES as string)
+          .replace("PERIOD", period)
+          .replace("A0000", userId),
+        {
+          headers: {
+            accept: "application/vnd.api+json",
+            authorization: `Bearer ${token?.oAuth}`,
+            "x-auth-jwt": token?.JWT,
+          },
+        }
+      )
       .then((response) => {
         for (let c of response.data.data) {
           if (c.relationships) {

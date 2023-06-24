@@ -1,9 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import axios from "axios";
-
-const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
-const c1 = JSON.parse(ep).oA;
-const c2 = JSON.parse(ep).jW;
 
 interface ClassInterface {
   id: string;
@@ -19,22 +15,49 @@ interface ClassInterface {
   teachers: { id: string; name: string }[];
 }
 
-export async function GET(request: Request) {
+interface TokenInterface {
+  JWT: string;
+  oAuth: string;
+}
+
+export async function GET(req: NextRequest) {
   let errorMsg: string[] = [];
   let resData: ClassInterface[] = [];
 
+  let token: TokenInterface | undefined;
+  const tokenString = req.cookies.get("token")?.value;
+  if (tokenString !== undefined) {
+    try {
+      token = JSON.parse(tokenString);
+    } catch (err: any) {
+      errorMsg.push(err.message);
+    }
+  }
+  const userId = token?.JWT
+    ? JSON.parse(Buffer.from(token.JWT.split(".")[1], "base64").toString()).iss
+    : "";
+
   await axios
-    .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades")
+    .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades", {
+      headers: {
+        Cookie: `token=${tokenString}`,
+      },
+    })
     .then(async (response1) => {
       for (let period of response1.data.periods) {
         await axios
-          .get((process.env.API_CLASSES as string).replace("PERIOD", period), {
-            headers: {
-              accept: "application/vnd.api+json",
-              authorization: `Bearer ${c1}`,
-              "x-auth-jwt": c2,
-            },
-          })
+          .get(
+            (process.env.API_CLASSES as string)
+              .replace("PERIOD", period)
+              .replace("A0000", userId),
+            {
+              headers: {
+                accept: "application/vnd.api+json",
+                authorization: `Bearer ${token?.oAuth}`,
+                "x-auth-jwt": token?.JWT,
+              },
+            }
+          )
           .then((response) => {
             for (let curso of response.data.data) {
               for (let horario of curso.attributes.horario) {

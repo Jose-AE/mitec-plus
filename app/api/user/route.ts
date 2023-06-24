@@ -1,9 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
-
-const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
-const c1 = JSON.parse(ep).oA;
-const c2 = JSON.parse(ep).jW;
 
 interface UserInterface {
   id: string;
@@ -14,16 +10,34 @@ interface UserInterface {
   pfp: string;
 }
 
-export async function GET(request: Request) {
+interface TokenInterface {
+  JWT: string;
+  oAuth: string;
+}
+
+export async function GET(req: NextRequest) {
   let errorMsg: string[] = [];
   let resData: UserInterface | null = null;
 
+  let token: TokenInterface | undefined;
+  const tokenString = req.cookies.get("token");
+  if (tokenString !== undefined) {
+    try {
+      token = JSON.parse(tokenString.value);
+    } catch (err: any) {
+      errorMsg.push(err.message);
+    }
+  }
+  const userId = token?.JWT
+    ? JSON.parse(Buffer.from(token.JWT.split(".")[1], "base64").toString()).iss
+    : "";
+
   await axios
-    .get(process.env.API_USER as string, {
+    .get((process.env.API_USER as string).replace("A0000", userId), {
       headers: {
         accept: "application/vnd.api+json",
-        authorization: `Bearer ${c1}`,
-        "x-auth-jwt": c2,
+        authorization: `Bearer ${token?.oAuth}`,
+        "x-auth-jwt": token?.JWT,
       },
     })
     .then((res) => {
@@ -42,11 +56,11 @@ export async function GET(request: Request) {
     });
 
   await axios
-    .get(process.env.API_PFP as string, {
+    .get((process.env.API_PFP as string).replace("A0000", userId), {
       headers: {
         accept: "application/vnd.api+json",
-        authorization: `Bearer ${c1}`,
-        "x-auth-jwt": c2,
+        authorization: `Bearer ${token?.oAuth}`,
+        "x-auth-jwt": token?.JWT,
       },
     })
     .then((res) => {

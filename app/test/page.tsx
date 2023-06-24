@@ -12,6 +12,7 @@ import {
 import TodaysClasses from "../dashboard/components/TodaysClasses";
 import { useEffect } from "react";
 import axios from "axios";
+import { Carousel } from "flowbite-react";
 
 const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
 
@@ -43,60 +44,28 @@ function App() {
 
   return (
     <>
-      <Box as="div" className="col-lg-4 d-inline-block align-top pr-5">
-        <Flex
-          className="card"
-          id="printJS-card"
-          pos="relative"
-          display="inline-block"
-          verticalAlign="middle"
-          height="270px"
-          textAlign="left"
-          padding="30px"
-          marginBottom="50px"
-          borderRadius="20px"
-          boxSizing="border-box"
-        >
-          <div>
-            <Image src="" alt="Logo Here" pos="absolute" width="116px" />
-          </div>
-          <Flex as="div" className="d-inline-block">
-            <Image width="150px" height="150px" margin="40px 0 25px 0" />
-          </Flex>
-          <Flex
-            as="div"
-            pos="relative"
-            display="inline-block"
-            verticalAlign="top"
-            padding="30px"
-          >
-            <Heading as="h5">John Doe</Heading>
-            <Heading as="h5">03/31/2019 at 11:19 AM</Heading>
-          </Flex>
-          <Flex className="text-center">
-            <Heading as="h5">Construction</Heading>
-          </Flex>
-        </Flex>
-        <Flex className="pt-2">
-          <Button
-            type="button"
-            value="Capture Face"
-            colorScheme="primary"
-            size="md"
-          >
-            Capture Face
-          </Button>
-          <Button
-            id="btn-populate-data"
-            type="button"
-            value="idScan"
-            colorScheme="success"
-            size="md"
-          >
-            idScan
-          </Button>
-        </Flex>
-      </Box>
+      <Carousel>
+        <img
+          alt="..."
+          src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+        />
+        <img
+          alt="..."
+          src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
+        />
+        <img
+          alt="..."
+          src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
+        />
+        <img
+          alt="..."
+          src="https://flowbite.com/docs/images/carousel/carousel-4.svg"
+        />
+        <img
+          alt="..."
+          src="https://flowbite.com/docs/images/carousel/carousel-5.svg"
+        />
+      </Carousel>
     </>
   );
 }

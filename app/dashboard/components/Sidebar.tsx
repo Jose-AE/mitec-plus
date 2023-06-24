@@ -23,6 +23,9 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  useColorMode,
+  Button,
+  Switch,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -34,6 +37,8 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+import { BsSun, BsMoonStarsFill } from "react-icons/bs";
+
 import { IconType } from "react-icons";
 import MitecLogo from "./MitecLogo";
 
@@ -54,6 +59,7 @@ const LinkItems: Array<LinkItemProps> = [
 
 export default function Sidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
@@ -153,6 +159,8 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -210,15 +218,22 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                 </Box>
               </HStack>
             </MenuButton>
+
             <MenuList
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
+              <Button
+                gap={2}
+                ml="10px"
+                variant={"ghost"}
+                onClick={toggleColorMode}
+              >
+                Tema {colorMode === "light" ? <BsMoonStarsFill /> : <BsSun />}
+              </Button>
+
               <MenuDivider />
-              <MenuItem>Sign out</MenuItem>
+              <MenuItem>Cerrar Sesión</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

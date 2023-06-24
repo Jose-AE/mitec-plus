@@ -8,11 +8,13 @@ import {
   Skeleton,
   Spinner,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
 import { BiMap, BiTimeFive } from "react-icons/bi";
+import { color } from "framer-motion";
 
 interface ClassInterface {
   id: string;
@@ -42,6 +44,11 @@ export default function TodaysClasses() {
         console.error(error);
       });
   }, []);
+
+  const colors = {
+    border: useColorModeValue("gray.200", "none"),
+    card: useColorModeValue("white", "none"),
+  };
 
   return (
     <>
@@ -124,14 +131,14 @@ export default function TodaysClasses() {
             return filteredClasses.map((c, i) => (
               <Flex
                 borderWidth="1px"
-                borderColor="gray.200"
+                borderColor={colors.border}
                 key={i}
                 justifyContent="space-between"
                 alignItems="center"
                 borderRadius="md"
                 w="100%"
                 h="70px"
-                bg={"white"}
+                bg={colors.card}
                 padding={5}
                 direction="row"
                 mb="10px"

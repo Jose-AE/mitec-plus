@@ -8,6 +8,7 @@ import {
   Select,
   Skeleton,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -43,6 +44,11 @@ export default function Grades() {
         console.error(error);
       });
   }, []);
+
+  const colors = {
+    border: useColorModeValue("gray.200", "none"),
+    card: useColorModeValue("white", "none"),
+  };
 
   return (
     <>
@@ -85,14 +91,14 @@ export default function Grades() {
             .map((g, i) => (
               <Flex
                 borderWidth="1px"
-                borderColor="gray.200"
+                borderColor={colors.border}
+                bg={colors.card}
                 key={i}
                 justifyContent="space-between"
                 alignItems="center"
                 borderRadius="md"
                 w="100%"
                 h="70px"
-                bg={"white"}
                 padding={5}
                 direction="row"
                 mb="10px"

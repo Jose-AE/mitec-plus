@@ -44,6 +44,7 @@ import MitecLogo from "./MitecLogo";
 
 import { BiHomeAlt2, BiIdCard, BiCalendar, BiCategory } from "react-icons/bi";
 import { TbSchool } from "react-icons/tb";
+import { getCookie } from "cookies-next";
 
 interface LinkItemProps {
   navTo: string;
@@ -208,9 +209,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Jose Luis</Text>
+                  <Text fontSize="sm">
+                    {JSON.parse(getCookie("user") as string).name}
+                  </Text>
                   <Text fontSize="xs" color="gray.600">
-                    A01028493
+                    {JSON.parse(getCookie("user") as string).id}
                   </Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>

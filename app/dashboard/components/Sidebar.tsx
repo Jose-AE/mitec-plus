@@ -47,7 +47,6 @@ interface LinkItemProps {
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: "Inicio", navTo: "/", icon: BiHomeAlt2 },
-  { name: "ID Digital", navTo: "/", icon: BiIdCard },
   { name: "Mi Agenda", navTo: "/", icon: BiCalendar },
   { name: "Mi Inscripción", navTo: "/", icon: TbSchool },
   { name: "Servicios", navTo: "/", icon: BiCategory },
@@ -107,7 +106,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
             <Text as="b" color="gray.500">
               tec
             </Text>
-            |<Text color="rgb(255, 153, 1)">estudiantes</Text>
+            |<Text color="rgb(255, 153, 1)">Plus+</Text>
           </Flex>
         </Flex>
 
@@ -128,7 +127,7 @@ interface NavItemProps extends FlexProps {
 const NavItem = ({ icon, navTo, name }: NavItemProps) => {
   return (
     <Link
-      href={navTo}
+      href={`/dashboard${navTo}`}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
@@ -181,17 +180,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
           <Text as="b" color="gray.500">
             tec
           </Text>
-          |<Text color="rgb(255, 153, 1)">estudiantes</Text>
+          |<Text color="rgb(255, 153, 1)">Plus+</Text>
         </Flex>
       </Flex>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -209,7 +202,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                 >
                   <Text fontSize="sm">Jose Luis</Text>
                   <Text fontSize="xs" color="gray.600">
-                    Estudiante
+                    A01028493
                   </Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>

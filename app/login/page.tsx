@@ -161,12 +161,13 @@ export default function page() {
         <Stack spacing={8} mx={"auto"} maxW={"lg"}>
           <Stack align={"center"}>
             <MitecLogo scale={0.25} />
-            <Text fontSize="4xl">
+            <Flex fontSize="4xl">
               mi
               <Text as="b" color="gray.500">
                 tec
               </Text>
-            </Text>
+              |<Text color="rgb(255, 153, 1)">Plus+</Text>
+            </Flex>
           </Stack>
           <Box
             rounded={"lg"}

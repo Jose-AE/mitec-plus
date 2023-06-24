@@ -33,7 +33,13 @@ function App() {
           <Grades />
         </GridItem>
 
-        <GridItem gridArea={{ base: "3 / 1 / 4 / 2", md: "3 / 1 / 5 / 4" }}>
+        <GridItem
+          maxH={{ base: "500px", md: "none" }}
+          p="10px"
+          borderRadius="lg"
+          borderWidth="2px"
+          gridArea={{ base: "3 / 1 / 4 / 2", md: "3 / 1 / 5 / 4" }}
+        >
           <IdCard />
         </GridItem>
       </Grid>

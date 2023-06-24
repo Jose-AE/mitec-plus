@@ -15,6 +15,7 @@ interface UserInterface {
 }
 
 export async function GET(request: Request) {
+  let errorMsg: string[] = [];
   let resData: UserInterface | null = null;
 
   await axios
@@ -37,7 +38,7 @@ export async function GET(request: Request) {
     })
 
     .catch((error) => {
-      //res = { error: error.message };
+      errorMsg.push(error.message);
     });
 
   await axios
@@ -55,13 +56,12 @@ export async function GET(request: Request) {
     })
 
     .catch((error) => {
-      console.log(error);
-      //res = { error: error.message };
+      errorMsg.push(error.message);
     });
 
-  if (resData) {
-    return NextResponse.json(resData);
+  if (errorMsg.length === 0) {
+    return NextResponse.json(resData, { status: 200 });
   } else {
-    return NextResponse.json({ error: "Error getting user data" });
+    return NextResponse.json({ error: errorMsg }, { status: 401 });
   }
 }

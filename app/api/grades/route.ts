@@ -17,7 +17,7 @@ interface GradesInterface {
 }
 
 export async function GET(request: Request) {
-  let res;
+  let errorMsg: string[] = [];
   let resData: GradesInterface = { periods: [], grades: [] };
 
   await axios
@@ -43,11 +43,10 @@ export async function GET(request: Request) {
         allPeriods.push(data.relationships["ejercicio-academico"].data.id);
       }
       resData.periods = Array.from(new Set(allPeriods));
-      res = resData;
     })
 
     .catch((error) => {
-      res = { error: error.message };
+      errorMsg.push(error.message);
     });
 
   for (let period of resData.periods) {
@@ -72,11 +71,14 @@ export async function GET(request: Request) {
           }
         }
       })
-
       .catch((error) => {
-        res = { error: error.message };
+        errorMsg.push(error.message);
       });
   }
 
-  return NextResponse.json(res);
+  if (errorMsg.length === 0) {
+    return NextResponse.json(resData, { status: 200 });
+  } else {
+    return NextResponse.json({ error: errorMsg }, { status: 401 });
+  }
 }

@@ -20,7 +20,7 @@ interface ClassInterface {
 }
 
 export async function GET(request: Request) {
-  let res;
+  let errorMsg: string[] = [];
   let resData: ClassInterface[] = [];
 
   await axios
@@ -91,15 +91,17 @@ export async function GET(request: Request) {
             }
           })
           .catch((error) => {
-            console.error(error);
+            errorMsg.push(error.message);
           });
-
-        res = resData;
       }
     })
     .catch((error) => {
-      console.error(error);
+      errorMsg.push(error.message);
     });
 
-  return NextResponse.json(res);
+  if (errorMsg.length === 0) {
+    return NextResponse.json(resData, { status: 200 });
+  } else {
+    return NextResponse.json({ error: errorMsg }, { status: 401 });
+  }
 }

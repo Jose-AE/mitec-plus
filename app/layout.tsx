@@ -1,7 +1,4 @@
-import Head from "next/head";
 import ChakraUiProvider from "./chakra-ui-provider";
-import "./globals.css";
-import SidebarWithHeader from "./components/sidebar";
 
 export const metadata = {
   title: "Mitec",

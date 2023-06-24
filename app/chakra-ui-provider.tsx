@@ -2,7 +2,7 @@
 
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
-import SidebarWithHeader from "./components/sidebar";
+import SidebarWithHeader from "./dashboard/components/Sidebar";
 
 import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/apfel-grotezk";
@@ -22,9 +22,7 @@ export default function ChakraUiProvider({
 }) {
   return (
     <CacheProvider>
-      <ChakraProvider theme={theme}>
-        {true ? <SidebarWithHeader>{children}</SidebarWithHeader> : children}
-      </ChakraProvider>
+      <ChakraProvider theme={theme}>{children}</ChakraProvider>
     </CacheProvider>
   );
 }

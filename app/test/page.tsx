@@ -9,7 +9,7 @@ import {
   GridItem,
   Heading,
 } from "@chakra-ui/react";
-import TodaysClasses from "../components/TodaysClasses";
+import TodaysClasses from "../dashboard/components/TodaysClasses";
 import { useEffect } from "react";
 import axios from "axios";
 

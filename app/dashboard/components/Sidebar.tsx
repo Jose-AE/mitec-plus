@@ -35,7 +35,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
-import MitecLogo from "./logo";
+import MitecLogo from "./MitecLogo";
 
 import { BiHomeAlt2, BiIdCard, BiCalendar, BiCategory } from "react-icons/bi";
 import { TbSchool } from "react-icons/tb";
@@ -53,11 +53,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Servicios", navTo: "/", icon: BiCategory },
 ];
 
-export default function SidebarWithHeader({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function Sidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>

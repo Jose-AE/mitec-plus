@@ -23,7 +23,7 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { MdLockOutline } from "react-icons/md";
-import MitecLogo from "../components/logo";
+import MitecLogo from "../dashboard/components/MitecLogo";
 import { useState } from "react";
 import Footer from "./footer";
 import axios from "axios";

@@ -18,29 +18,27 @@ interface GradesInterface {
 const url1 =
   "https://apigateway.tec.mx/tec-de-monterrey/api/tec/personas?alumno=A01028493&include=correos-electronicos,generos,paises,estados,poblaciones";
 
-const url2 =
-  "https://apigateway.tec.mx/tec-de-monterrey/api/tec/alumnos/A01028493/horario-de-cursos?claveEjercicioAcademico=*";
-
 function App() {
   useEffect(() => {
-    for (let period of ["202311"]) {
-      axios
-        .get(url2, {
+    axios
+      .get(
+        "https://apigateway.tec.mx/tec-de-monterrey/api/tec/id-digital/A01028493",
+        {
           headers: {
             accept: "application/vnd.api+json",
             authorization: `Bearer ${c1}`,
             "x-auth-jwt": c2,
           },
-        })
-        .then((response) => {
-          console.log(response.data);
-        })
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
 
-        .catch((error) => {
-          console.log(error);
-          //res = { error: error.message };
-        });
-    }
+      .catch((error) => {
+        console.log(error);
+        //res = { error: error.message };
+      });
   }, []);
 
   return <>d</>;

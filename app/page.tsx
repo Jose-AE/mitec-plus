@@ -3,6 +3,7 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import TodaysClasses from "./components/TodaysClasses";
 import Grades from "./components/Grades";
+import IdCard from "./components/IdCard";
 function App() {
   return (
     <>
@@ -32,10 +33,9 @@ function App() {
           <Grades />
         </GridItem>
 
-        <GridItem
-          gridArea={{ base: "3 / 1 / 4 / 2", md: "3 / 1 / 5 / 4" }}
-          bg="red.200"
-        ></GridItem>
+        <GridItem gridArea={{ base: "3 / 1 / 4 / 2", md: "3 / 1 / 5 / 4" }}>
+          <IdCard />
+        </GridItem>
       </Grid>
     </>
   );

@@ -21,19 +21,13 @@ export async function GET(request: Request) {
   let resData: GradesInterface = { periods: [], grades: [] };
 
   await axios
-    .get(
-      (process.env.NEXT_PUBLIC_API_CLASS_NAMES as string).replace(
-        "PERIOD",
-        true ? "" : `?ejercicio-academico=${202311}`
-      ),
-      {
-        headers: {
-          accept: "application/vnd.api+json",
-          authorization: `Bearer ${c1}`,
-          "x-auth-jwt": c2,
-        },
-      }
-    )
+    .get(process.env.API_CLASS_NAMES as string, {
+      headers: {
+        accept: "application/vnd.api+json",
+        authorization: `Bearer ${c1}`,
+        "x-auth-jwt": c2,
+      },
+    })
     .then((response) => {
       const allPeriods: string[] = [];
       for (let data of response.data.data) {
@@ -58,19 +52,13 @@ export async function GET(request: Request) {
 
   for (let period of resData.periods) {
     await axios
-      .get(
-        (process.env.NEXT_PUBLIC_API_GRADES as string).replace(
-          "PERIOD",
-          period
-        ),
-        {
-          headers: {
-            accept: "application/vnd.api+json",
-            authorization: `Bearer ${c1}`,
-            "x-auth-jwt": c2,
-          },
-        }
-      )
+      .get((process.env.API_GRADES as string).replace("PERIOD", period), {
+        headers: {
+          accept: "application/vnd.api+json",
+          authorization: `Bearer ${c1}`,
+          "x-auth-jwt": c2,
+        },
+      })
       .then((response) => {
         for (let c of response.data.data) {
           if (c.relationships) {
@@ -92,69 +80,3 @@ export async function GET(request: Request) {
 
   return NextResponse.json(res);
 }
-/*
-
-
-
-
-
-{
-    "type": "cursos",
-    "id": "202311-18673",
-    "attributes": {
-        "numeroReferenciaCurso": "18673",
-        "calificacionFinal": "SA",
-        "indicador": "L"
-    },
-    "relationships": {
-        "curso-unificado": {
-            "data": {
-                "type": "curso-unificado",
-                "id": "CCM.WKLI1006S.205.2311.18673"
-            }
-        }
-    }
-}
-
-
-
-
-
-
-axios
-      .get(
-        (process.env.NEXT_PUBLIC_API_GRADES as string).replace(
-          "PERIOD",
-          period === "" ? "" : `?ejercicio-academico=${period}`
-        ),
-        {
-          headers: {
-            accept: "application/vnd.api+json",
-            authorization: `Bearer ${c1}`,
-            "x-auth-jwt": c2,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-
-        const formattedGrades: GradesInterface[] = [];
-        const allPeriods: string[] = [];
-        for (let data of response.data.data) {
-          formattedGrades.push({
-            grade: data.attributes.promedioUnidadFormacion,
-            name: data.attributes.descripcionGrupo,
-          });
-
-          allPeriods.push(data.relationships["ejercicio-academico"].data.id);
-        }
-        if (period === "") {
-          setPeriods(Array.from(new Set(allPeriods)));
-        }
-        setGrades(formattedGrades);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-*/

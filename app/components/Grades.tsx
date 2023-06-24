@@ -38,7 +38,6 @@ export default function Grades() {
       .then((response) => {
         setPeriods(response.data.periods);
         setGrades(response.data.grades);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);

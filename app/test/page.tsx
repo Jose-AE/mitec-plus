@@ -15,30 +15,25 @@ interface GradesInterface {
   grades: { id: string; name: string; period: string; grade: string }[];
 }
 
+const url1 =
+  "https://apigateway.tec.mx/tec-de-monterrey/api/tec/personas?alumno=A01028493&include=correos-electronicos,generos,paises,estados,poblaciones";
+
+const url2 =
+  "https://apigateway.tec.mx/tec-de-monterrey/api/tec/alumnos/A01028493/horario-de-cursos?claveEjercicioAcademico=*";
+
 function App() {
   useEffect(() => {
     for (let period of ["202311"]) {
       axios
-        .get(
-          (process.env.NEXT_PUBLIC_API_GRADES as string).replace(
-            "PERIOD",
-            period
-          ),
-          {
-            headers: {
-              accept: "application/vnd.api+json",
-              authorization: `Bearer ${c1}`,
-              "x-auth-jwt": c2,
-            },
-          }
-        )
+        .get(url2, {
+          headers: {
+            accept: "application/vnd.api+json",
+            authorization: `Bearer ${c1}`,
+            "x-auth-jwt": c2,
+          },
+        })
         .then((response) => {
-          console.log(response);
-          for (let c of response.data.data) {
-            if (c.relationships) {
-              console.log(c);
-            }
-          }
+          console.log(response.data);
         })
 
         .catch((error) => {

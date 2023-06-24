@@ -38,23 +38,13 @@ export default function TodaysClasses() {
 
   useEffect(() => {
     axios
-      .get(
-        (process.env.NEXT_PUBLIC_API_CLASSES as string).replace(
-          "PERIOD",
-          `${new Date().getFullYear()}${
-            new Date().getMonth() >= 7 && new Date().getMonth() <= 11
-              ? "13"
-              : "11"
-          }`
-        ),
-        {
-          headers: {
-            accept: "application/vnd.api+json",
-            authorization: `Bearer ${c1}`,
-            "x-auth-jwt": c2,
-          },
-        }
-      )
+      .get(process.env.NEXT_PUBLIC_API_CLASSES as string, {
+        headers: {
+          accept: "application/vnd.api+json",
+          authorization: `Bearer ${c1}`,
+          "x-auth-jwt": c2,
+        },
+      })
       .then((response) => {
         let formattedClasses: ClassInterface[] = [];
 

@@ -12,13 +12,15 @@ import {
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const ep = process.env.NEXT_PUBLIC_TEST_SECRET as string;
-const c1 = JSON.parse(ep).oA;
-const c2 = JSON.parse(ep).jW;
-
 interface GradesInterface {
-  grade: number | null;
-  name: string;
+  periods: string[];
+  grades: {
+    id: string;
+    name: string;
+    group: string;
+    period: string;
+    grade: string;
+  }[];
 }
 
 export default function Grades() {
@@ -28,34 +30,9 @@ export default function Grades() {
 
   useEffect(() => {
     axios
-      .get(
-        (process.env.NEXT_PUBLIC_API_GRADES as string).replace(
-          "PERIOD",
-          period === "" ? "" : `?ejercicio-academico=${period}`
-        ),
-        {
-          headers: {
-            accept: "application/vnd.api+json",
-            authorization: `Bearer ${c1}`,
-            "x-auth-jwt": c2,
-          },
-        }
-      )
+      .get("http://localhost:3000/api/grades")
       .then((response) => {
-        const formattedGrades: GradesInterface[] = [];
-        const allPeriods: string[] = [];
-        for (let data of response.data.data) {
-          formattedGrades.push({
-            grade: data.attributes.promedioUnidadFormacion,
-            name: data.attributes.descripcionGrupo,
-          });
-
-          allPeriods.push(data.relationships["ejercicio-academico"].data.id);
-        }
-        if (period === "") {
-          setPeriods(Array.from(new Set(allPeriods)));
-        }
-        setGrades(formattedGrades);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);

@@ -32,7 +32,7 @@ export default function Info() {
           <UnorderedList>
             <ListItem>
               Ingresa a{" "}
-              <Link color="blue.500" href="https://chakra-ui.com" isExternal>
+              <Link color="blue.500" href="https://mitec.itesm.mx" isExternal>
                 Mitec <ExternalLinkIcon mx="2px" />
               </Link>{" "}
               e ingresa con tu cuenta

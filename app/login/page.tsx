@@ -23,6 +23,7 @@ import {
   ModalCloseButton,
   FormLabel,
   FormControl,
+  useToast,
 } from "@chakra-ui/react";
 
 import { useRouter } from "next/navigation";
@@ -45,6 +46,7 @@ export default function page() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const router = useRouter();
+  const toast = useToast();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -76,7 +78,16 @@ export default function page() {
       correctFormat = true;
     } catch (error) {
       setLoading(false);
-      console.error(error);
+      if (!toast.isActive("format-error")) {
+        toast({
+          id: "format-error",
+          title: "Cookie tiene formato incorrecto",
+          description: `Asegúrate de que la cookie que has pegado tenga el siguiente formato (incluyendo comillas): \n\n'"{\\\\"i.......00}"'`,
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
     }
 
     if (correctFormat) {
@@ -88,7 +99,17 @@ export default function page() {
         })
         .catch((error) => {
           setLoading(false);
-          console.error(error);
+          if (!toast.isActive("server-error")) {
+            toast({
+              id: "server-error",
+              title: "Error validando cookie",
+              description:
+                "Se produjo un error al validar la cookie, probablemente porque ha caducado. Intenta recargar la página de Mitec para obtener una nueva cookie.",
+              status: "error",
+              duration: 9000,
+              isClosable: true,
+            });
+          }
         });
     }
   }
@@ -98,7 +119,7 @@ export default function page() {
       <Modal isCentered motionPreset="scale" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader></ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <FormControl>

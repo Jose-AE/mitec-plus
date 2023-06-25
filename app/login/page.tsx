@@ -99,7 +99,7 @@ export default function Page() {
           localStorage.setItem("user_id", res.data.id);
           localStorage.setItem("user_name", res.data.name);
 
-          router.push("/dashboard");
+          window.location.href = "/dashboard";
         })
         .catch((error) => {
           setLoading(false);
@@ -146,7 +146,7 @@ export default function Page() {
               mr={3}
               onClick={() => {
                 setCookie("demo", "true");
-                router.push("/dashboard");
+                window.location.href = "/dashboard";
               }}
             >
               Explorar demo

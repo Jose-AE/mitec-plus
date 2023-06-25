@@ -269,7 +269,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   deleteCookie("token");
                   deleteCookie("demo");
 
-                  router.push("/login");
+                  window.location.href = "/login";
                 }}
               >
                 Cerrar Sesión

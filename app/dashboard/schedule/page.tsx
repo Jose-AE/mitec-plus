@@ -131,7 +131,7 @@ export default function Page() {
 
   return (
     <>
-      {`Numero de clases cursadas: ${events.length}`}
+      {events.length > 0 ? `Numero de clases cursadas: ${events.length}` : ""}
       <Modal isCentered={true} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

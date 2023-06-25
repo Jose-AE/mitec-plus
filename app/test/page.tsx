@@ -21,28 +21,24 @@ interface TokenInterface {
 
 function App() {
   useEffect(() => {
-    const token: TokenInterface | undefined = JSON.parse(
-      getCookie("token") as string
-    );
-
     axios
       .get(
-        "https://apigateway.tec.mx/tec-de-monterrey/api/tec/id-digital/A01028493",
+        "https://mitec.itesm.mx/Alumnos/ins/_api/web/lists/GetByTitle('InsEtapasPIS')/items?$filter=Periodos/IdPeriodo%20eq%20202312&$orderby=Orden%20asc",
         {
           headers: {
-            accept: "application/vnd.api+json",
-            authorization: `Bearer ${token?.oAuth}`,
-            "x-auth-jwt": token?.JWT,
+            Accept: "application/json;odata=verbose",
+            "Content-Type": "application/json",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
           },
         }
       )
       .then((response) => {
+        // Handle the response here
         console.log(response.data);
       })
-
       .catch((error) => {
-        console.log(error);
-        //res = { error: error.message };
+        // Handle the error here
+        console.error(error);
       });
   }, []);
 

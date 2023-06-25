@@ -53,10 +53,14 @@ interface LinkItemProps {
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Inicio", navTo: "/", icon: BiHomeAlt2 },
-  { name: "Mi Agenda", navTo: "/schedule", icon: BiCalendar },
-  { name: "Mi Inscripción", navTo: "/", icon: TbSchool },
-  { name: "Servicios", navTo: "/", icon: BiCategory },
+  { name: "Inicio", navTo: "/dashboard", icon: BiHomeAlt2 },
+  { name: "Mi Agenda", navTo: "/dashboard/schedule", icon: BiCalendar },
+  {
+    name: "Mi Inscripción",
+    navTo: "https://iris.tec.mx/app/enrollment-processes",
+    icon: TbSchool,
+  },
+  { name: "Servicios", navTo: "/dashboard/services", icon: BiCategory },
 ];
 
 export default function Sidebar({ children }: { children: ReactNode }) {
@@ -135,7 +139,8 @@ interface NavItemProps extends FlexProps {
 const NavItem = ({ icon, navTo, name }: NavItemProps) => {
   return (
     <Link
-      href={`/dashboard${navTo}`}
+      href={navTo}
+      target={navTo.slice(0, 1) === "h" ? "_blank" : ""}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
@@ -147,7 +152,7 @@ const NavItem = ({ icon, navTo, name }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: "gray.100",
+          bg: useColorModeValue("gray.100", "gray.700"),
         }}
       >
         {icon && <Icon mr="4" fontSize="16" as={icon} />}

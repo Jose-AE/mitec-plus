@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import axios from "axios";
+import { cookies } from "next/headers";
 
 interface ClassInterface {
   id: string;
@@ -138,6 +139,12 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(classesNoDuplicates, { status: 200 });
   } else {
+    cookies().set({
+      name: "token",
+      value: "",
+      maxAge: 0,
+      path: "/",
+    });
     return NextResponse.json({ error: errorMsg }, { status: 401 });
   }
 }

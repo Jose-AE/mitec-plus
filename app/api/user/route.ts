@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
+import { cookies } from "next/headers";
 
 interface UserInterface {
   id: string;
@@ -76,6 +77,12 @@ export async function GET(req: NextRequest) {
   if (errorMsg.length === 0) {
     return NextResponse.json(resData, { status: 200 });
   } else {
+    cookies().set({
+      name: "token",
+      value: "",
+      maxAge: 0,
+      path: "/",
+    });
     return NextResponse.json({ error: errorMsg }, { status: 401 });
   }
 }

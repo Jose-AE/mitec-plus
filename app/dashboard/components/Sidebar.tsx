@@ -190,7 +190,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         setId(localStorage.getItem("user_id") || "");
       }
     }
-  });
+  }, []);
 
   return (
     <Flex

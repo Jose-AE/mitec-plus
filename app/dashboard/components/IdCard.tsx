@@ -67,6 +67,7 @@ export default function IdCard() {
             gridArea={{ base: "1 / 1 / 3 / 4", md: "1 / 1 / 4 / 5" }}
           >
             <Image
+              alt=""
               objectFit="contain"
               h="100%"
               w="100%"
@@ -117,6 +118,7 @@ export default function IdCard() {
               h="100%"
             >
               <Image
+                alt=""
                 borderRadius="10px"
                 objectFit="contain"
                 h="100%"
@@ -131,31 +133,3 @@ export default function IdCard() {
     </>
   );
 }
-
-/*
-
-
-      <Flex h="80%" borderRadius="lg" bgSize="cover" bgImage="/IdBG.png">
-        <Image
-          h="100px"
-          p="20px"
-          borderRadius="lg"
-          src="/LogoTecLarge.png"
-        ></Image>
-        <Image
-          objectFit="contain"
-          h="100px"
-          borderRadius="lg"
-          src={user?.pfp}
-        ></Image>
-        <Flex direction="column">
-          <Text color="white" as="b">
-            {user?.name} {user?.surname1} {user?.surname2}
-          </Text>
-          <Text color="white" as="b">
-            {user?.id}
-          </Text>
-        </Flex>
-      </Flex>
-
-*/

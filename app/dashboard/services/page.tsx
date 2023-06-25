@@ -101,6 +101,7 @@ export default function Services() {
                 _hover={{ bg: "gray.200", cursor: "pointer" }}
               >
                 <Image
+                  alt=""
                   objectFit="cover"
                   w="100%"
                   h="100%"

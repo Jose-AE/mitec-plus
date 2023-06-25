@@ -7,45 +7,8 @@ const nextConfig = {
         destination: "/dashboard",
         permanent: true,
       },
-      // Has demo and no token when going to login
-      {
-        source: "/login",
-        missing: [
-          {
-            type: "cookie",
-            key: "token",
-          },
-        ],
-        has: [
-          {
-            type: "cookie",
-            key: "demo",
-          },
-        ],
 
-        permanent: true,
-        destination: "/dashboard",
-      },
-      // Has no demo but token when going to login
-      {
-        source: "/login",
-        has: [
-          {
-            type: "cookie",
-            key: "token",
-          },
-        ],
-        missing: [
-          {
-            type: "cookie",
-            key: "demo",
-          },
-        ],
-
-        permanent: true,
-        destination: "/dashboard",
-      },
-      // Has no demo and no token when going to dashboard
+      // Has no demo to dashboard
       {
         source: "/dashboard",
         missing: [
@@ -59,7 +22,7 @@ const nextConfig = {
           },
         ],
 
-        permanent: true,
+        permanent: false,
         destination: "/login",
       },
     ];

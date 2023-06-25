@@ -13,7 +13,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-export default function page() {
+export default function Page() {
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [search, setSearch] = useState<string>("");
 

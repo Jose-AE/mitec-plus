@@ -42,7 +42,7 @@ import Footer from "./footer";
 import axios from "axios";
 import Info from "./Info";
 
-export default function page() {
+export default function Page() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const router = useRouter();

@@ -42,7 +42,13 @@ import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 import { IconType } from "react-icons";
 import MitecLogo from "./MitecLogo";
 
-import { BiHomeAlt2, BiIdCard, BiCalendar, BiCategory } from "react-icons/bi";
+import {
+  BiHomeAlt2,
+  BiIdCard,
+  BiCalendar,
+  BiCategory,
+  BiInfoCircle,
+} from "react-icons/bi";
 import { TbSchool } from "react-icons/tb";
 import { getCookie, deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
@@ -62,6 +68,7 @@ const LinkItems: Array<LinkItemProps> = [
     icon: TbSchool,
   },
   { name: "Servicios", navTo: "/dashboard/services", icon: BiCategory },
+  { name: "Por que Mitec+", navTo: "/dashboard/about", icon: BiInfoCircle },
 ];
 
 export default function Sidebar({ children }: { children: ReactNode }) {

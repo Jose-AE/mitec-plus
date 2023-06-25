@@ -7,9 +7,11 @@ const nextConfig = {
         destination: "/dashboard",
         permanent: true,
       },
-      // Missing demo and token, redirect to dashboard
+
+      // missiing  token missing demo, redirect to dash
       {
         source: "/dashboard",
+
         missing: [
           {
             type: "cookie",
@@ -23,6 +25,8 @@ const nextConfig = {
         permanent: false,
         destination: "/login",
       },
+
+      //goooooooooood
       // has demo  redirect to dashboard
       {
         source: "/login",

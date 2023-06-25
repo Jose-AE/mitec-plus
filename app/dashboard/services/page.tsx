@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SERVICES from "./data";
 import {
   Box,
@@ -13,7 +13,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-export default function Page() {
+export default function Services() {
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [search, setSearch] = useState<string>("");
 

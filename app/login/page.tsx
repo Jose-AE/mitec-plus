@@ -28,7 +28,7 @@ import {
 
 import { useRouter } from "next/navigation";
 
-import { getCookie, setCookie } from "cookies-next";
+import { deleteCookie, getCookie, setCookie } from "cookies-next";
 
 import {
   AiOutlineEyeInvisible,
@@ -55,6 +55,9 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
 
   function verifyCookie() {
+    deleteCookie("demo");
+    deleteCookie("token");
+
     let correctFormat = false;
     setLoading(true);
     try {

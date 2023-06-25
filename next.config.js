@@ -26,7 +26,7 @@ const nextConfig = {
         destination: "/login",
       },
 
-      //goooooooooood
+      /*
       // has demo  redirect to dashboard
       {
         source: "/login",
@@ -51,6 +51,7 @@ const nextConfig = {
         permanent: false,
         destination: "/dashboard",
       },
+      */
     ];
   },
 };

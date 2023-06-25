@@ -23,7 +23,7 @@ const nextConfig = {
           },
         ],
 
-        permanent: false,
+        permanent: true,
         destination: "/dashboard",
       },
       // Has no demo but token when going to login
@@ -42,7 +42,7 @@ const nextConfig = {
           },
         ],
 
-        permanent: false,
+        permanent: true,
         destination: "/dashboard",
       },
       // Has no demo and no token when going to dashboard
@@ -59,7 +59,7 @@ const nextConfig = {
           },
         ],
 
-        permanent: false,
+        permanent: true,
         destination: "/login",
       },
     ];

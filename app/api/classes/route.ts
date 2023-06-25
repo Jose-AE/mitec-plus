@@ -123,7 +123,20 @@ export async function GET(req: NextRequest) {
     });
 
   if (errorMsg.length === 0) {
-    return NextResponse.json(resData, { status: 200 });
+    const classesNoDuplicates = resData.filter((c, i, arr) => {
+      if (
+        arr.some(
+          (o, j) =>
+            j < i && o.classStartDate === c.classStartDate && o.id === c.id
+        ) === true
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    return NextResponse.json(classesNoDuplicates, { status: 200 });
   } else {
     return NextResponse.json({ error: errorMsg }, { status: 401 });
   }

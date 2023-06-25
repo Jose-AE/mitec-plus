@@ -82,17 +82,6 @@ export default function TodaysClasses() {
           (() => {
             const filteredClasses = classes
               .filter((c, i, arr) => {
-                if (
-                  arr.some(
-                    (o, j) =>
-                      j < i &&
-                      o.classStartDate === c.classStartDate &&
-                      o.id === c.id
-                  ) === true
-                ) {
-                  return false;
-                }
-
                 const classStartDate = new Date(c.classStartDate);
                 const classEndDate = new Date(c.classEndDate);
 

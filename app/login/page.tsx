@@ -141,7 +141,14 @@ export default function page() {
           </ModalBody>
 
           <ModalFooter>
-            <Button isDisabled={loading} mr={3} onClick={onClose}>
+            <Button
+              isDisabled={loading}
+              mr={3}
+              onClick={() => {
+                setCookie("demo", "true");
+                router.push("/dashboard");
+              }}
+            >
               Explorar demo
             </Button>
             <Button

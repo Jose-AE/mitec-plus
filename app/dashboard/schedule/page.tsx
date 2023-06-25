@@ -21,6 +21,8 @@ import {
 
 import { AiOutlineUser } from "react-icons/ai";
 import axios from "axios";
+import { getCookie } from "cookies-next";
+import demo_classes from "@/app/demo_data/classes";
 
 interface EventInterface {
   title: string;
@@ -33,6 +35,57 @@ interface EventInterface {
     group: string;
     time: string;
   };
+}
+
+function formatClasses(classes: any) {
+  const classesAsDays: any[] = [];
+  for (let c of classes) {
+    let classColor = "#";
+    const startDate = new Date(c.classStartDate);
+    const endDate = new Date(c.classEndDate);
+    const daysOfWeek = c.days;
+
+    //random specific color to class:
+    let hash = 8; // seed
+    c.id.split("").forEach((char: string) => {
+      hash = char.charCodeAt(0) + ((hash << 5) - hash);
+    });
+
+    for (let i = 0; i < 3; i++) {
+      const value = (hash >> (i * 8)) & 0xff;
+      classColor += value.toString(16).padStart(2, "0");
+    }
+    ///////
+
+    let currentDate = startDate;
+    while (currentDate <= endDate) {
+      const dayOfWeek = currentDate.getDay();
+      const dayAbbreviation = ["SU", "M", "T", "W", "R", "F", "SA"];
+
+      if (daysOfWeek.includes(dayAbbreviation[dayOfWeek])) {
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        const day = currentDate.getDate().toString().padStart(2, "0");
+
+        const dayObject = {
+          title: c.name,
+          start: `${year}-${month}-${day}T${c.classStartTime}`,
+          end: `${year}-${month}-${day}T${c.classEndTime}`,
+          color: classColor,
+
+          teachers: c.teachers.map((t: any) => t.name),
+          location: `${c.classBuilding} ${c.classroom}`,
+          group: c.group,
+          time: `${c.classStartTime} a ${c.classEndTime}`,
+        };
+
+        classesAsDays.push(dayObject);
+      }
+
+      currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+    }
+  }
+  return classesAsDays;
 }
 
 export default function Page() {
@@ -55,66 +108,19 @@ export default function Page() {
   const [events, setEvents] = useState<any[]>([]);
 
   useEffect(() => {
-    axios
-      .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
-      .then((res) => {
-        const classes = res.data;
-
-        const classesAsDays: any[] = [];
-        for (let c of classes) {
-          let classColor = "#";
-          const startDate = new Date(c.classStartDate);
-          const endDate = new Date(c.classEndDate);
-          const daysOfWeek = c.days;
-
-          //random specific color to class:
-          let hash = 8; // seed
-          c.id.split("").forEach((char: string) => {
-            hash = char.charCodeAt(0) + ((hash << 5) - hash);
-          });
-
-          for (let i = 0; i < 3; i++) {
-            const value = (hash >> (i * 8)) & 0xff;
-            classColor += value.toString(16).padStart(2, "0");
-          }
-          ///////
-
-          let currentDate = startDate;
-          while (currentDate <= endDate) {
-            const dayOfWeek = currentDate.getDay();
-            const dayAbbreviation = ["SU", "M", "T", "W", "R", "F", "SA"];
-
-            if (daysOfWeek.includes(dayAbbreviation[dayOfWeek])) {
-              const year = currentDate.getFullYear();
-              const month = (currentDate.getMonth() + 1)
-                .toString()
-                .padStart(2, "0");
-              const day = currentDate.getDate().toString().padStart(2, "0");
-
-              const dayObject = {
-                title: c.name,
-                start: `${year}-${month}-${day}T${c.classStartTime}`,
-                end: `${year}-${month}-${day}T${c.classEndTime}`,
-                color: classColor,
-
-                teachers: c.teachers.map((t: any) => t.name),
-                location: `${c.classBuilding} ${c.classroom}`,
-                group: c.group,
-                time: `${c.classStartTime} a ${c.classEndTime}`,
-              };
-
-              classesAsDays.push(dayObject);
-            }
-
-            currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
-          }
-        }
-        console.log(classesAsDays[0]);
-        setEvents(classesAsDays);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (getCookie("demo")) {
+      setEvents(formatClasses(demo_classes));
+    } else {
+      axios
+        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
+        .then((res) => {
+          const classes = res.data;
+          setEvents(formatClasses(classes));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }, []);
 
   const calendarOptions: any = {

@@ -46,6 +46,7 @@ import { BiHomeAlt2, BiIdCard, BiCalendar, BiCategory } from "react-icons/bi";
 import { TbSchool } from "react-icons/tb";
 import { getCookie, deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
+import demo_user from "@/app/demo_data/user";
 
 interface LinkItemProps {
   navTo: string;
@@ -174,8 +175,13 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setName(localStorage.getItem("user_name") || "");
-      setId(localStorage.getItem("user_id") || "");
+      if (getCookie("demo")) {
+        setName(demo_user.name);
+        setId(demo_user.id);
+      } else {
+        setName(localStorage.getItem("user_name") || "");
+        setId(localStorage.getItem("user_id") || "");
+      }
     }
   });
 
@@ -254,6 +260,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               <MenuItem
                 onClick={() => {
                   deleteCookie("token");
+                  deleteCookie("demo");
+
                   router.push("/login");
                 }}
               >

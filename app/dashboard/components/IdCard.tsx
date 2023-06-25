@@ -11,7 +11,8 @@ import {
   Skeleton,
   Text,
 } from "@chakra-ui/react";
-import Barcode from "react-barcode";
+import { getCookie } from "cookies-next";
+import demo_user from "@/app/demo_data/user";
 
 interface UserInterface {
   id: string;
@@ -26,14 +27,18 @@ export default function IdCard() {
   const [user, setUser] = useState<UserInterface>();
 
   useEffect(() => {
-    axios
-      .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/user")
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (getCookie("demo")) {
+      setUser(demo_user);
+    } else {
+      axios
+        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/user")
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }, []);
 
   return (

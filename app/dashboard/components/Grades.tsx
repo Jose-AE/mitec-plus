@@ -12,6 +12,8 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { getCookie } from "cookies-next";
+import demo_grades from "@/app/demo_data/grades";
 
 interface GradeInterface {
   id: string;
@@ -34,15 +36,20 @@ export default function Grades() {
   const [grades, setGrades] = useState<GradeInterface[]>([]);
 
   useEffect(() => {
-    axios
-      .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades")
-      .then((response) => {
-        setPeriods(response.data.periods);
-        setGrades(response.data.grades);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (getCookie("demo")) {
+      setGrades(demo_grades.grades);
+      setPeriods(demo_grades.periods);
+    } else {
+      axios
+        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades")
+        .then((response) => {
+          setPeriods(response.data.periods);
+          setGrades(response.data.grades);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }, []);
 
   const colors = {

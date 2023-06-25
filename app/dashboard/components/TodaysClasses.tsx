@@ -15,6 +15,8 @@ import axios from "axios";
 import { SingleDatepicker } from "chakra-dayzed-datepicker";
 import { BiMap, BiTimeFive } from "react-icons/bi";
 import { color } from "framer-motion";
+import { getCookie } from "cookies-next";
+import demo_classes from "@/app/demo_data/classes";
 
 interface ClassInterface {
   id: string;
@@ -35,14 +37,18 @@ export default function TodaysClasses() {
   const [classes, setClasses] = useState<ClassInterface[]>([]);
 
   useEffect(() => {
-    axios
-      .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
-      .then((res) => {
-        setClasses(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (getCookie("demo")) {
+      setClasses(demo_classes);
+    } else {
+      axios
+        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
+        .then((res) => {
+          setClasses(res.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }, []);
 
   const colors = {

@@ -9,7 +9,12 @@ const nextConfig = {
             type: "cookie",
             key: "token",
           },
+          {
+            type: "cookie",
+            key: "demo",
+          },
         ],
+
         permanent: false,
         destination: "/login",
       },

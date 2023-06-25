@@ -35,20 +35,6 @@ interface EventInterface {
   };
 }
 
-interface ClassInterface {
-  id: string;
-  name: string;
-  classStartDate: string;
-  classEndDate: string;
-  classStartTime: string;
-  classEndTime: string;
-  days: string[];
-  group: string;
-  classBuilding: string;
-  classroom: string;
-  teachers: { id: string; name: string }[];
-}
-
 export default function Page() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [eventTitle, setEventTitle] = useState("");
@@ -66,70 +52,65 @@ export default function Page() {
     setEventGroup(clickInfo.event.extendedProps.group);
   }
 
-  const [events, setEvents] = useState<EventInterface[]>([]);
+  const [events, setEvents] = useState<any[]>([]);
 
   useEffect(() => {
     axios
       .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
       .then((res) => {
-        setEvents(
-          res.data
-            .map((c: ClassInterface) => {
-              const {
-                name,
-                classStartDate,
-                classEndDate,
-                classStartTime,
-                classEndTime,
-                days,
-                teachers,
-                classroom,
-                classBuilding,
-                group,
-              } = c;
+        const classes = res.data;
 
-              // Calculate the start and end dates for the class
-              const startDate = new Date(classStartDate);
-              const endDate = new Date(classEndDate);
-              endDate.setDate(endDate.getDate() + 1); // Add 1 day to include the end date
+        const classesAsDays: any[] = [];
+        for (let c of classes) {
+          let classColor = "#";
+          const startDate = new Date(c.classStartDate);
+          const endDate = new Date(c.classEndDate);
+          const daysOfWeek = c.days;
 
-              const eventDays = days.map((day: string) => {
-                const dayIndex = ["SU", "M", "T", "W", "R", "F", "SA"].indexOf(
-                  day
-                );
-                const eventStart = new Date(startDate);
-                eventStart.setDate(
-                  eventStart.getDate() +
-                    ((dayIndex - startDate.getDay() + 7) % 7)
-                );
-                eventStart.setHours(
-                  Number(classStartTime.split(":")[0]),
-                  Number(classStartTime.split(":")[1])
-                );
-                const eventEnd = new Date(eventStart);
-                eventEnd.setHours(
-                  Number(classEndTime.split(":")[0]),
-                  Number(classEndTime.split(":")[1])
-                );
+          //random specific color to class:
+          let hash = 8; // seed
+          c.id.split("").forEach((char: string) => {
+            hash = char.charCodeAt(0) + ((hash << 5) - hash);
+          });
 
-                return {
-                  title: name,
-                  start: eventStart,
-                  end: eventEnd,
-                  teachers: teachers.map((t) => t.name),
-                  location: `${classBuilding} ${classroom}`,
-                  group,
-                  time: `${classStartTime} a ${classEndTime}`,
-                  color: `#${Math.floor(Math.random() * 16777215).toString(
-                    16
-                  )}`,
-                };
-              });
+          for (let i = 0; i < 3; i++) {
+            const value = (hash >> (i * 8)) & 0xff;
+            classColor += value.toString(16).padStart(2, "0");
+          }
+          ///////
 
-              return eventDays;
-            })
-            .flat()
-        );
+          let currentDate = startDate;
+          while (currentDate <= endDate) {
+            const dayOfWeek = currentDate.getDay();
+            const dayAbbreviation = ["SU", "M", "T", "W", "R", "F", "SA"];
+
+            if (daysOfWeek.includes(dayAbbreviation[dayOfWeek])) {
+              const year = currentDate.getFullYear();
+              const month = (currentDate.getMonth() + 1)
+                .toString()
+                .padStart(2, "0");
+              const day = currentDate.getDate().toString().padStart(2, "0");
+
+              const dayObject = {
+                title: c.name,
+                start: `${year}-${month}-${day}T${c.classStartTime}`,
+                end: `${year}-${month}-${day}T${c.classEndTime}`,
+                color: classColor,
+
+                teachers: c.teachers.map((t: any) => t.name),
+                location: `${c.classBuilding} ${c.classroom}`,
+                group: c.group,
+                time: `${c.classStartTime} a ${c.classEndTime}`,
+              };
+
+              classesAsDays.push(dayObject);
+            }
+
+            currentDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+          }
+        }
+        console.log(classesAsDays[0]);
+        setEvents(classesAsDays);
       })
       .catch((error) => {
         console.error(error);
@@ -150,6 +131,7 @@ export default function Page() {
 
   return (
     <>
+      {`Numero de clases cursadas: ${events.length}`}
       <Modal isCentered={true} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

@@ -68,7 +68,7 @@ const LinkItems: Array<LinkItemProps> = [
     icon: TbSchool,
   },
   { name: "Servicios", navTo: "/dashboard/services", icon: BiCategory },
-  { name: "Por que Mitec+", navTo: "/dashboard/about", icon: BiInfoCircle },
+  { name: "Sobre Mitec+", navTo: "/dashboard/about", icon: BiInfoCircle },
 ];
 
 export default function Sidebar({ children }: { children: ReactNode }) {

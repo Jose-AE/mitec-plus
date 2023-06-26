@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { BiGroup, BiMap, BiTimeFive } from "react-icons/bi";
@@ -89,6 +89,8 @@ function formatClasses(classes: any) {
 }
 
 export default function Page() {
+  const calendarRef = useRef(null);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [eventTitle, setEventTitle] = useState("");
   const [eventTime, setEventTime] = useState("");
@@ -110,6 +112,10 @@ export default function Page() {
   useEffect(() => {
     if (getCookie("token")) {
       if (JSON.parse(getCookie("token") as string).demo === "true") {
+        (calendarRef.current as InstanceType<any>)
+          .getApi()
+          ?.gotoDate(new Date("2023-04-02"));
+
         setEvents(formatClasses(demo_classes));
       } else {
         axios
@@ -129,6 +135,7 @@ export default function Page() {
     plugins: [timeGridPlugin],
     initialView: "timeGridWeek",
     events: events,
+
     eventClick: handleEventClick,
 
     slotMinTime: "05:00",
@@ -171,7 +178,7 @@ export default function Page() {
           <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
-      <FullCalendar {...calendarOptions} />
+      <FullCalendar ref={calendarRef} {...calendarOptions} />
     </>
   );
 }

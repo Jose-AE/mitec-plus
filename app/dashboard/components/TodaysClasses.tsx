@@ -40,6 +40,9 @@ export default function TodaysClasses() {
     if (getCookie("token")) {
       if (JSON.parse(getCookie("token") as string).demo === "true") {
         setClasses(demo_classes);
+        setTimeout(() => {
+          setDate(new Date("2023-02-14"));
+        }, 100);
       } else {
         axios
           .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")

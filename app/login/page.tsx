@@ -9,49 +9,35 @@ import {
   Button,
   Text,
   useColorModeValue,
-  InputRightElement,
   InputGroup,
-  IconButton,
   InputLeftElement,
   Modal,
   useDisclosure,
-  ModalOverlay,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalCloseButton,
-  FormLabel,
-  FormControl,
   useToast,
+  Accordion,
+  AccordionIcon,
+  AccordionPanel,
+  AccordionItem,
+  AccordionButton,
+  UnorderedList,
+  ListItem,
+  Code,
+  Kbd,
+  Tooltip,
 } from "@chakra-ui/react";
 
-import { useRouter } from "next/navigation";
-
-import { deleteCookie, getCookie, setCookie } from "cookies-next";
-
-import {
-  AiOutlineEyeInvisible,
-  AiOutlineEye,
-  AiOutlineUser,
-} from "react-icons/ai";
-import { MdLockOutline } from "react-icons/md";
+import { setCookie } from "cookies-next";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { MdLockOutline, MdOutlineCookie } from "react-icons/md";
 import MitecLogo from "../dashboard/components/MitecLogo";
 import { useState } from "react";
 import Footer from "./footer";
 import axios from "axios";
-import Info from "./Info";
 
 export default function Page() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const router = useRouter();
   const toast = useToast();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [userCookie, setUserCookie] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
   function verifyCookie() {
@@ -121,56 +107,6 @@ export default function Page() {
 
   return (
     <>
-      <Modal isCentered motionPreset="scale" isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader></ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <FormControl>
-              <FormLabel>Cookie</FormLabel>
-              <Input
-                type="text"
-                autoComplete="off"
-                isDisabled={loading}
-                onChange={(e) => {
-                  setUserCookie(e.target.value);
-                }}
-              />
-            </FormControl>
-            <Info />
-          </ModalBody>
-
-          <ModalFooter>
-            <Button
-              isDisabled={loading}
-              mr={3}
-              onClick={() => {
-                setCookie(
-                  "token",
-                  JSON.stringify({
-                    JWT: "",
-                    oAuth: "",
-                    demo: "true",
-                  })
-                );
-                window.location.href = "/dashboard";
-              }}
-            >
-              Explorar demo
-            </Button>
-            <Button
-              isLoading={loading}
-              isDisabled={userCookie === ""}
-              onClick={verifyCookie}
-              colorScheme="blue"
-            >
-              Ingresar con cookie
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
       <Flex
         minH={{ base: `calc(100vh - ${230}px)`, md: `calc(100vh - ${80}px)` }}
         align={"center"}
@@ -189,6 +125,7 @@ export default function Page() {
             </Flex>
           </Stack>
           <Box
+            w={{ base: "350px", md: "450px" }}
             rounded={"lg"}
             bg={useColorModeValue("white", "gray.700")}
             boxShadow={"lg"}
@@ -197,77 +134,112 @@ export default function Page() {
             <Stack spacing={4}>
               <InputGroup>
                 <InputLeftElement pointerEvents="none">
-                  <AiOutlineUser color="gray.300" />
+                  <MdOutlineCookie color="gray.300" />
                 </InputLeftElement>
                 <Input
                   onChange={(e) => {
-                    setUsername(e.target.value);
+                    setUserCookie(e.target.value);
                   }}
-                  placeholder="Usuario"
-                  type="email"
+                  placeholder="Cookie"
+                  type="text"
                 />
               </InputGroup>
 
-              <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                  <MdLockOutline color="gray.300" />
-                </InputLeftElement>
-                <Input
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  placeholder="Contraseña"
-                  pr="40px"
-                  type={showPassword ? "text" : "password"}
-                />
-                <InputRightElement>
-                  <IconButton
-                    size="sm"
-                    aria-label="Search database"
-                    icon={
-                      showPassword ? (
-                        <AiOutlineEyeInvisible />
-                      ) : (
-                        <AiOutlineEye />
-                      )
-                    }
-                    onClick={() => {
-                      setShowPassword(!showPassword);
-                    }}
-                  />
-                </InputRightElement>
-              </InputGroup>
+              <Accordion mt={"0px"} allowMultiple>
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box as="span" flex="1" textAlign="left">
+                        Como obtener cookie
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    <UnorderedList>
+                      <ListItem>
+                        Ingresa a{" "}
+                        <Link
+                          color="blue.500"
+                          href="https://mitec.itesm.mx"
+                          isExternal
+                        >
+                          Mitec <ExternalLinkIcon mx="2px" />
+                        </Link>{" "}
+                        e ingresa con tu cuenta
+                      </ListItem>
+                      <ListItem>
+                        Cuando estes en el tablero presiona <Kbd>F12</Kbd>
+                      </ListItem>
+                      <ListItem>
+                        Ingresa el siguiente comando en la consola:{" "}
+                        <Code>document.cookie.match(/Epsilon=([^;]+)/)[1]</Code>
+                      </ListItem>
+                      <ListItem>
+                        Esto va a imprimir tu cookie, copiala y pegala arriba
+                      </ListItem>
+                    </UnorderedList>
+                  </AccordionPanel>
+                </AccordionItem>
 
-              <Stack spacing={5}>
-                <Button
-                  onClick={() => {
-                    onOpen();
-                  }}
-                  bg={"blue.400"}
-                  color={"white"}
-                  _hover={{
-                    bg: "blue.500",
-                  }}
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton>
+                      <Box as="span" flex="1" textAlign="left">
+                        ¿Es seguro?
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    ¡Sí! Una vez que ingreses tu cookie, esta se guardará
+                    únicamente en tu navegador y no se enviará a ningún otro
+                    lugar para su almacenamiento. Solo será utilizada para
+                    obtener información como tus materias, calificaciones y
+                    nombre. Además, en caso de que se llegara a filtrar, la
+                    cookie tiene una fecha de expiración de 1 hora, por lo que
+                    su utilidad sería limitada.
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+
+              <Flex gap={3}>
+                <Tooltip
+                  hasArrow
+                  label="Por si solo quieres ver la interfaz y las funciones que ofrece Mitec +, se usarán datos de demostración precargados como clases y calificaciones"
+                  bg="gray.300"
+                  color="black"
                 >
-                  Ingresar
+                  <Button
+                    w="50%"
+                    isDisabled={loading}
+                    onClick={() => {
+                      setLoading(true);
+                      setCookie(
+                        "token",
+                        JSON.stringify({
+                          JWT: "",
+                          oAuth: "",
+                          demo: "true",
+                        })
+                      );
+                      window.location.href = "/dashboard";
+                    }}
+                  >
+                    Explorar demo
+                  </Button>
+                </Tooltip>
+
+                <Button
+                  w="50%"
+                  isLoading={loading}
+                  isDisabled={userCookie === ""}
+                  onClick={verifyCookie}
+                  colorScheme="blue"
+                >
+                  Ingresar con cookie
                 </Button>
-                <Flex flexDirection="column" gap={3} alignItems="center">
-                  <Link
-                    target="_blank"
-                    href="https://miscuentas.tec.mx/sspr/public/ForgottenPassword"
-                    color={"blue.400"}
-                  >
-                    Olvidaste tu contraseña?
-                  </Link>
-                  <Link
-                    target="_blank"
-                    href="https://tecprod.service-now.com/$sn-va-web-client-app.do?sysparm_default_topic=083128c347f29910676de567436d43a6&sysparm_portal=tec"
-                    color={"blue.400"}
-                  >
-                    ¿Necesitas ayuda? Contáctanos
-                  </Link>
-                </Flex>
-              </Stack>
+              </Flex>
             </Stack>
           </Box>
         </Stack>

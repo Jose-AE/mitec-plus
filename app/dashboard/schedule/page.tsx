@@ -108,18 +108,20 @@ export default function Page() {
   const [events, setEvents] = useState<any[]>([]);
 
   useEffect(() => {
-    if (getCookie("demo")) {
-      setEvents(formatClasses(demo_classes));
-    } else {
-      axios
-        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
-        .then((res) => {
-          const classes = res.data;
-          setEvents(formatClasses(classes));
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    if (getCookie("token")) {
+      if (JSON.parse(getCookie("token") as string).demo === "true") {
+        setEvents(formatClasses(demo_classes));
+      } else {
+        axios
+          .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes-")
+          .then((res) => {
+            const classes = res.data;
+            setEvents(formatClasses(classes));
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
     }
   }, []);
 

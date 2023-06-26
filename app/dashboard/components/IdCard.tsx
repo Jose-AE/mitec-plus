@@ -27,17 +27,19 @@ export default function IdCard() {
   const [user, setUser] = useState<UserInterface>();
 
   useEffect(() => {
-    if (getCookie("demo")) {
-      setUser(demo_user);
-    } else {
-      axios
-        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/user")
-        .then((res) => {
-          setUser(res.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    if (getCookie("token")) {
+      if (JSON.parse(getCookie("token") as string).demo === "true") {
+        setUser(demo_user);
+      } else {
+        axios
+          .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/user")
+          .then((res) => {
+            setUser(res.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
     }
   }, []);
 

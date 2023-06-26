@@ -55,9 +55,6 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
 
   function verifyCookie() {
-    deleteCookie("demo");
-    deleteCookie("token");
-
     let correctFormat = false;
     setLoading(true);
     try {
@@ -73,6 +70,7 @@ export default function Page() {
         JSON.stringify({
           JWT: cookieObj.jW,
           oAuth: cookieObj.oA,
+          demo: "false",
         }),
         {
           expires: exp,
@@ -148,7 +146,14 @@ export default function Page() {
               isDisabled={loading}
               mr={3}
               onClick={() => {
-                setCookie("demo", "true");
+                setCookie(
+                  "token",
+                  JSON.stringify({
+                    JWT: "",
+                    oAuth: "",
+                    demo: "true",
+                  })
+                );
                 window.location.href = "/dashboard";
               }}
             >

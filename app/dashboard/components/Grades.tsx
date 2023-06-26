@@ -36,19 +36,21 @@ export default function Grades() {
   const [grades, setGrades] = useState<GradeInterface[]>([]);
 
   useEffect(() => {
-    if (getCookie("demo")) {
-      setGrades(demo_grades.grades);
-      setPeriods(demo_grades.periods);
-    } else {
-      axios
-        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades")
-        .then((response) => {
-          setPeriods(response.data.periods);
-          setGrades(response.data.grades);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    if (getCookie("token")) {
+      if (JSON.parse(getCookie("token") as string).demo === "true") {
+        setGrades(demo_grades.grades);
+        setPeriods(demo_grades.periods);
+      } else {
+        axios
+          .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/grades")
+          .then((response) => {
+            setPeriods(response.data.periods);
+            setGrades(response.data.grades);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
     }
   }, []);
 

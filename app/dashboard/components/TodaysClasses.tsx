@@ -37,17 +37,19 @@ export default function TodaysClasses() {
   const [classes, setClasses] = useState<ClassInterface[]>([]);
 
   useEffect(() => {
-    if (getCookie("demo")) {
-      setClasses(demo_classes);
-    } else {
-      axios
-        .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
-        .then((res) => {
-          setClasses(res.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    if (getCookie("token")) {
+      if (JSON.parse(getCookie("token") as string).demo === "true") {
+        setClasses(demo_classes);
+      } else {
+        axios
+          .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
+          .then((res) => {
+            setClasses(res.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
     }
   }, []);
 

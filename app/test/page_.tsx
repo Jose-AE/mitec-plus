@@ -22,16 +22,13 @@ interface TokenInterface {
 function App() {
   useEffect(() => {
     axios
-      .get(
-        "https://mitec.itesm.mx/Alumnos/ins/_api/web/lists/GetByTitle('InsEtapasPIS')/items?$filter=Periodos/IdPeriodo%20eq%20202312&$orderby=Orden%20asc",
-        {
-          headers: {
-            Accept: "application/json;odata=verbose",
-            "Content-Type": "application/json",
-            "Referrer-Policy": "strict-origin-when-cross-origin",
-          },
-        }
-      )
+      .get("URL", {
+        headers: {
+          Accept: "application/json;odata=verbose",
+          "Content-Type": "application/json",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+        },
+      })
       .then((response) => {
         // Handle the response here
         console.log(response.data);

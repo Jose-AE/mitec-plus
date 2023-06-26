@@ -181,8 +181,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const [id, setId] = useState("");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (getCookie("demo")) {
+    if (getCookie("token")) {
+      if (JSON.parse(getCookie("token") as string).demo === "true") {
         setName(demo_user.name);
         setId(demo_user.id);
       } else {
@@ -267,7 +267,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               <MenuItem
                 onClick={() => {
                   deleteCookie("token");
-                  deleteCookie("demo");
 
                   window.location.href = "/login";
                 }}

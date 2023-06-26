@@ -113,7 +113,7 @@ export default function Page() {
         setEvents(formatClasses(demo_classes));
       } else {
         axios
-          .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes-")
+          .get(process.env.NEXT_PUBLIC_DOMAIN + "/api/classes")
           .then((res) => {
             const classes = res.data;
             setEvents(formatClasses(classes));

@@ -62,7 +62,7 @@ function formatClasses(classes: any) {
       const dayOfWeek = currentDate.getDay();
       const dayAbbreviation = ["SU", "M", "T", "W", "R", "F", "SA"];
 
-      if (daysOfWeek.includes(dayAbbreviation[dayOfWeek])) {
+      if (daysOfWeek?.includes(dayAbbreviation[dayOfWeek])) {
         const year = currentDate.getFullYear();
         const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
         const day = currentDate.getDate().toString().padStart(2, "0");

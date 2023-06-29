@@ -100,7 +100,7 @@ export default function TodaysClasses() {
                 return (
                   date >= classStartDate &&
                   date <= classEndDate &&
-                  c.days.includes(
+                  c.days?.includes(
                     ["SU", "M", "T", "W", "R", "F", "SA"][date.getDay()]
                   )
                 );

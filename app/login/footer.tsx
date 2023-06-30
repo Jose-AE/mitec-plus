@@ -10,7 +10,13 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 import { ReactNode } from "react";
 import { Link } from "@chakra-ui/next-js";
 
@@ -77,9 +83,19 @@ export default function Footer() {
           <Link target="_blank" href="https://letica.mx/ETHOS">
             ETHOS
           </Link>
+
+          <Link target="_blank" href="/about">
+            Sobre Mitec+
+          </Link>
         </Flex>
 
         <Stack mt="10px" direction={"row"} spacing={6}>
+          <SocialButton
+            label={"Github"}
+            href={"https://github.com/Jose-AE/mitec-plus"}
+          >
+            <FaGithub />
+          </SocialButton>
           <SocialButton
             label={"Twitter"}
             href={"https://twitter.com/TecdeMonterrey"}

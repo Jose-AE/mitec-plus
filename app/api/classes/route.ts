@@ -22,7 +22,7 @@ interface TokenInterface {
 }
 
 export async function GET(req: NextRequest) {
-  let errorMsg: string[] = [];
+  let errorMsg: { error: string; debugMsg: string }[] = [];
   let resData: ClassInterface[] = [];
 
   let token: TokenInterface | undefined;
@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
       errorMsg.push(err.message);
     }
   }
-  const userId = token?.JWT
+  let userId = token?.JWT
     ? JSON.parse(Buffer.from(token.JWT.split(".")[1], "base64").toString()).iss
     : "";
 
@@ -75,7 +75,7 @@ export async function GET(req: NextRequest) {
                   classroom: horario.claveSalon,
                   teachers: [
                     {
-                      id: curso.relationships["profesor-titular"].data.id,
+                      id: curso.relationships["profesor-titular"]?.data.id,
                       name: "NA",
                     },
                   ],
@@ -115,12 +115,18 @@ export async function GET(req: NextRequest) {
             }
           })
           .catch((error) => {
-            errorMsg.push(error.message);
+            errorMsg.push({
+              error: error.message,
+              debugMsg: "Error fetching API_CLASSES",
+            });
           });
       }
     })
     .catch((error) => {
-      errorMsg.push(error.message);
+      errorMsg.push({
+        error: error.message,
+        debugMsg: "Error fetching api/grades",
+      });
     });
 
   if (errorMsg.length === 0) {

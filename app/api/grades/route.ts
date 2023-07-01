@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
-import { deleteCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
 interface GradesInterface {
@@ -20,7 +19,7 @@ interface TokenInterface {
 }
 
 export async function GET(req: NextRequest) {
-  let errorMsg: string[] = [];
+  let errorMsg: { error: string; debugMsg: string }[] = [];
   let resData: GradesInterface = { periods: [], grades: [] };
 
   let token: TokenInterface | undefined;
@@ -32,7 +31,7 @@ export async function GET(req: NextRequest) {
       errorMsg.push(err.message);
     }
   }
-  const userId = token?.JWT
+  let userId = token?.JWT
     ? JSON.parse(Buffer.from(token.JWT.split(".")[1], "base64").toString()).iss
     : "";
 
@@ -45,7 +44,6 @@ export async function GET(req: NextRequest) {
       },
     })
     .then((response) => {
-      //console.log(response.data);
       const allPeriods: string[] = [];
       for (let data of response.data.data) {
         const splitName = data.attributes.descripcionGrupo.split(" (");
@@ -63,7 +61,10 @@ export async function GET(req: NextRequest) {
     })
 
     .catch((error) => {
-      errorMsg.push(error.message);
+      errorMsg.push({
+        error: error.message,
+        debugMsg: "Error fetching API_CLASS_NAMES",
+      });
     });
 
   for (let period of resData.periods) {
@@ -82,19 +83,20 @@ export async function GET(req: NextRequest) {
       )
       .then((response) => {
         for (let c of response.data.data) {
-          if (c.relationships) {
-            const id = c.relationships["curso-unificado"].data.id;
-            const selectedClass = resData.grades.find(
-              (grade) => grade.id === id
-            );
-            if (selectedClass && c.attributes.calificacionFinal) {
-              selectedClass.grade = c.attributes.calificacionFinal;
-            }
+          const id = c.id;
+          const selectedClass = resData.grades.find(
+            (grade) => `${period}-${grade.id.split(".").slice(-1)}` === id
+          );
+          if (selectedClass && c.attributes && c.attributes.calificacionFinal) {
+            selectedClass.grade = c.attributes.calificacionFinal;
           }
         }
       })
       .catch((error) => {
-        errorMsg.push(error.message);
+        errorMsg.push({
+          error: error.message,
+          debugMsg: "Error fetching API_GRADES",
+        });
       });
   }
 

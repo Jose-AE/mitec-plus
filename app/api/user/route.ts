@@ -17,7 +17,7 @@ interface TokenInterface {
 }
 
 export async function GET(req: NextRequest) {
-  let errorMsg: string[] = [];
+  let errorMsg: { error: string; debugMsg: string }[] = [];
   let resData: UserInterface | null = null;
 
   let token: TokenInterface | undefined;
@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
       errorMsg.push(err.message);
     }
   }
-  const userId = token?.JWT
+  let userId = token?.JWT
     ? JSON.parse(Buffer.from(token.JWT.split(".")[1], "base64").toString()).iss
     : "";
 
@@ -53,7 +53,10 @@ export async function GET(req: NextRequest) {
     })
 
     .catch((error) => {
-      errorMsg.push(error.message);
+      errorMsg.push({
+        error: error.message,
+        debugMsg: "Error fetching API_USER",
+      });
     });
 
   await axios
@@ -71,7 +74,10 @@ export async function GET(req: NextRequest) {
     })
 
     .catch((error) => {
-      errorMsg.push(error.message);
+      errorMsg.push({
+        error: error.message,
+        debugMsg: "Error fetching API_PFP",
+      });
     });
 
   if (errorMsg.length === 0) {

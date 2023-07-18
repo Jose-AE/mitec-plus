@@ -224,6 +224,7 @@ export default function Page() {
                   isDisabled={userCookie === ""}
                   onClick={verifyCookie}
                   colorScheme="blue"
+                  fontSize={{ base: "xs", md: "md" }}
                 >
                   Ingresar con cookie
                 </Button>

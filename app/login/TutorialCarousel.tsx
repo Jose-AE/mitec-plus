@@ -1,58 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   IconButton,
   useBreakpointValue,
   Stack,
-  Heading,
-  Text,
-  Container,
-  Flex,
-  useColorModeValue,
-  Avatar,
   Image,
   Card,
-  CardBody,
+  Flex,
 } from "@chakra-ui/react";
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import { BiClipboard, BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 import TutorialData from "./TutorialData";
+import { debug } from "console";
 
 function getBrowserInstructions() {
-  var userAgent = navigator.userAgent;
-  var browserName;
+  //return TutorialData["chrome"].mobile; //remove line, just testing
 
-  if (userAgent.indexOf("Firefox") > -1) {
-    browserName = "firefox";
-  } else if (userAgent.indexOf("Chrome") > -1) {
-    browserName = "chrome";
-  } else if (userAgent.indexOf("Safari") > -1) {
-    browserName = "safari";
-  } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
-    browserName = "opera";
-  } else if (userAgent.indexOf("Edge") > -1) {
-    browserName = "edge";
-  } else if (userAgent.indexOf("Trident") > -1) {
-    browserName = "Internet Explorer";
-  } else {
-    browserName = "Unknown Browser";
+  var browserList = [
+    { name: "Firefox", value: "Firefox" },
+    { name: "Opera", value: "OPR" },
+    { name: "Edge", value: "Edg" },
+    { name: "Chrome", value: "Chrome" },
+    { name: "Safari", value: "Safari" },
+  ];
+  var os = [
+    { name: "Android", value: "Android" },
+    { name: "iPhone", value: "iPhone" },
+    { name: "iPad", value: "Mac" },
+    { name: "Macintosh", value: "Mac" },
+    { name: "Linux", value: "Linux" },
+    { name: "Windows", value: "Win" },
+  ];
+
+  let userDetails = navigator.userAgent;
+  let userOS: string = "NA";
+  let userBrowser: string = "NA";
+  for (let i in browserList) {
+    if (userDetails.includes(browserList[i].value)) {
+      userBrowser = browserList[i].name || "NA";
+      break;
+    }
+  }
+  for (let i in os) {
+    if (userDetails.includes(os[i].value)) {
+      userOS = os[i].name;
+      break;
+    }
   }
 
-  return TutorialData["chrome"].desktop; //remove line, just testing
+  console.log(userOS, userBrowser);
 
-  if (userAgent.indexOf("Win") > -1) {
-    return TutorialData[browserName].desktop;
-  } else if (userAgent.indexOf("Mac") > -1) {
-    return TutorialData[browserName].desktop;
-  } else if (userAgent.indexOf("Linux") > -1) {
-    return TutorialData[browserName].desktop;
-  } else if (userAgent.indexOf("Android") > -1) {
-    return TutorialData[browserName].mobile;
-  } else if (userAgent.indexOf("iOS") > -1) {
-    return TutorialData[browserName].mobile;
-  } else {
-    return TutorialData.default;
-  }
+  if (userOS === "Windows" && userBrowser === "Chrome")
+    return TutorialData.chrome.desktop; //
+  else if (userOS === "Windows" && userBrowser === "Firefox")
+    return TutorialData.firefox.desktop; //
+  else if (userOS === "Macintosh" && userBrowser === "Safari")
+    return TutorialData.firefox.desktop;
+  else if (userOS === "Macintosh" && userBrowser === "Firefox")
+    return TutorialData.firefox.desktop; //
+  else if (userOS === "Macintosh" && userBrowser === "Chrome")
+    return TutorialData.chrome.desktop; //
+  else if (
+    (userOS === "iPad" || userOS === "iPhone") &&
+    userBrowser === "Safari"
+  )
+    return TutorialData.chrome.mobile;
+  else if (
+    (userOS === "iPad" || userOS === "iPhone") &&
+    userBrowser === "Safari"
+  )
+    return TutorialData.chrome.mobile; //
+  else if (userOS === "Android" && userBrowser === "Chrome")
+    return TutorialData.chrome.mobile; //
+  /////
+  else return TutorialData.default;
 }
 
 // Settings for the slider
@@ -67,23 +88,15 @@ const settings = {
 };
 
 export default function TutorialCarousel() {
-  // As we have used custom buttons, we need a reference variable to
-  // change the state
-  const [slider, setSlider] = React.useState<Slider | null>(null);
+  const [slider, setSlider] = useState<Slider | null>(null);
+  const [instructions, setInstructions] = useState([]);
 
-  // These are the breakpoints which changes the position of the
-  // buttons as the screen size changes
   const top = useBreakpointValue({ base: "95%", md: "95%" });
   const side = useBreakpointValue({ base: "0%", md: "10px" });
 
-  // This list contains all the data for carousels
-  // This can be static or loaded from a server
-  const cards = getBrowserInstructions().map((data: any) => {
-    return {
-      info: data.info,
-      image: data.image,
-    };
-  });
+  useEffect(() => {
+    setInstructions(getBrowserInstructions());
+  }, []);
 
   return (
     <Box
@@ -133,12 +146,11 @@ export default function TutorialCarousel() {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((card: any, i: number) => (
+        {instructions.map((card: any, i: number) => (
           <Card dropShadow={"none"} key={i} maxW="sm">
-            <Image src={card.image} alt="Info" borderRadius="lg" />
-            <Stack mt="2" spacing="3">
-              {card.info}
-            </Stack>
+            <Image src={card.image} alt="Info" borderRadius="lg" mb="2" />
+
+            {card.info}
           </Card>
         ))}
       </Slider>

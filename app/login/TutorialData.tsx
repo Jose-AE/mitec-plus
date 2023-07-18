@@ -35,8 +35,8 @@ const TutorialData: any = {
         info: (
           <Text>
             Presiona <Kbd>CTRL + D</Kbd> esto va a abrir el menú para agregar un
-            marcador, En carpeta selecciona "Barra De Marcadores" y haz click en
-            el Botón de "Mas"
+            marcador, En carpeta selecciona &quot;Barra De Marcadores&quot; y
+            haz click en el Botón de &quot;Mas&quot;
           </Text>
         ),
       },
@@ -120,8 +120,8 @@ const TutorialData: any = {
         image: "Tutorials/Mobile/Chrome/4.png",
         info: (
           <Text>
-            En carpeta selecciona "Marcadores de movil" despues haz click en
-            este botón{" "}
+            En carpeta selecciona &quot;Marcadores de movil&quot; despues haz
+            click en este botón{" "}
             <IconButton
               size={"sm"}
               aria-label="Search database"
@@ -153,8 +153,8 @@ const TutorialData: any = {
             Ya que hiciste click en el marcador tu cookie se va a copiar
             automaticamente y te va a aparecer un mensaje de que se copio(en
             caso de que no se haya copiado la puedes copiar
-            manualmente),finalmente haz click en "ok" y automaticamente te va a
-            redirigir a Mitec+ para que la pegues.
+            manualmente),finalmente haz click en &quot;ok&quot; y
+            automaticamente te va a redirigir a Mitec+ para que la pegues.
           </Text>
         ),
       },

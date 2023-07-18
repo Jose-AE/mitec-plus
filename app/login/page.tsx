@@ -12,7 +12,7 @@ import {
   InputGroup,
   InputLeftElement,
   Modal,
-  useDisclosure,
+  useBreakpointValue,
   useToast,
   Accordion,
   AccordionIcon,
@@ -25,6 +25,7 @@ import {
   Kbd,
   Tooltip,
   Badge,
+  IconButton,
 } from "@chakra-ui/react";
 
 import { setCookie } from "cookies-next";
@@ -34,6 +35,7 @@ import MitecLogo from "../dashboard/components/MitecLogo";
 import { useState, ReactNode } from "react";
 import Footer from "./footer";
 import axios from "axios";
+import TutorialCarousel from "./TutorialCarousel";
 
 export default function Page() {
   const toast = useToast();
@@ -106,103 +108,6 @@ export default function Page() {
     }
   }
 
-  function getBrowserInstructions() {
-    const bookmarkCode =
-      "javascript: (function () {var e = document.createElement('textarea');document.body.appendChild(e);e.value = `'${document.cookie.match(/Epsilon=([^;]+)/)[1]}'`;e.select();document.execCommand('copy');document.body.removeChild(e);alert('Cookie copiada');})();";
-
-    const instructions: any = {
-      chrome: {
-        desktop: [
-          <ListItem>
-            Presiona <Kbd>CTRL + D</Kbd>
-          </ListItem>,
-          <ListItem>
-            En <Code>carpeta</Code> seleciona:
-            <Code>BarraDeMarcadores</Code>
-          </ListItem>,
-          <ListItem>
-            Haz click en el boton de <Badge variant="outline">Mas</Badge>
-          </ListItem>,
-          <ListItem>
-            De nombre ponle lo que quieras(ej: ObtenerCookieMitec)
-          </ListItem>,
-          <ListItem>
-            Borra el URL y pega el siguiente codigo: <Code>{bookmarkCode}</Code>
-          </ListItem>,
-          <ListItem>
-            Haz click en el boton de <Badge variant="outline">Salvar</Badge>
-          </ListItem>,
-          <ListItem>
-            Presiona <Kbd>CTRL + SHIFT + B</Kbd> para mostrar la barra de
-            bookmarks
-          </ListItem>,
-        ],
-        mobile: [],
-      },
-      firefox: { desktop: ["Hello"], mobile: [] },
-      safari: { desktop: ["Hello"], mobile: [] },
-      opera: { desktop: ["Hello"], mobile: [] },
-      edge: { desktop: ["Hello"], mobile: [] },
-      default: [
-        <ListItem>
-          Ingresa a{" "}
-          <Link color="blue.500" href="https://mitec.itesm.mx" isExternal>
-            Mitec <ExternalLinkIcon mx="2px" />
-          </Link>{" "}
-          e ingresa con tu cuenta
-        </ListItem>,
-        <ListItem>
-          Cuando estes en el tablero presiona <Kbd>F12</Kbd>
-        </ListItem>,
-        <ListItem>
-          Ingresa el siguiente comando en la consola:{" "}
-          <Code>document.cookie.match(/Epsilon=([^;]+)/)[1]</Code>
-        </ListItem>,
-        <ListItem>
-          Esto va a imprimir tu cookie, copiala y pegala arriba
-        </ListItem>,
-      ],
-    };
-
-    return instructions.default; ////////////////////
-
-    var userAgent = navigator.userAgent;
-    var browserName;
-
-    if (userAgent.indexOf("Firefox") > -1) {
-      browserName = "firefox";
-    } else if (userAgent.indexOf("Chrome") > -1) {
-      browserName = "chrome";
-    } else if (userAgent.indexOf("Safari") > -1) {
-      browserName = "safari";
-    } else if (
-      userAgent.indexOf("Opera") > -1 ||
-      userAgent.indexOf("OPR") > -1
-    ) {
-      browserName = "opera";
-    } else if (userAgent.indexOf("Edge") > -1) {
-      browserName = "edge";
-    } else if (userAgent.indexOf("Trident") > -1) {
-      browserName = "Internet Explorer";
-    } else {
-      browserName = "Unknown Browser";
-    }
-
-    if (userAgent.indexOf("Win") > -1) {
-      return instructions[browserName].desktop;
-    } else if (userAgent.indexOf("Mac") > -1) {
-      return instructions[browserName].desktop;
-    } else if (userAgent.indexOf("Linux") > -1) {
-      return instructions[browserName].desktop;
-    } else if (userAgent.indexOf("Android") > -1) {
-      return instructions[browserName].mobile;
-    } else if (userAgent.indexOf("iOS") > -1) {
-      return instructions[browserName].mobile;
-    } else {
-      return instructions.default;
-    }
-  }
-
   return (
     <>
       <Flex
@@ -235,6 +140,7 @@ export default function Page() {
                   <MdOutlineCookie color="gray.300" />
                 </InputLeftElement>
                 <Input
+                  id="cookie_input"
                   onChange={(e) => {
                     setUserCookie(e.target.value);
                   }}
@@ -254,9 +160,12 @@ export default function Page() {
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    <UnorderedList>
-                      {getBrowserInstructions().map((item: any) => item)}
-                    </UnorderedList>
+                    {/* <UnorderedList>
+                      {getBrowserInstructions().map((item: any, i: number) => (
+                        <div key={i}>{item}</div>
+                      ))}
+                    </UnorderedList> */}
+                    <TutorialCarousel />
                   </AccordionPanel>
                 </AccordionItem>
 
@@ -309,6 +218,7 @@ export default function Page() {
                 </Tooltip>
 
                 <Button
+                  id="cookie_button"
                   w="50%"
                   isLoading={loading}
                   isDisabled={userCookie === ""}
@@ -326,13 +236,3 @@ export default function Page() {
     </>
   );
 }
-
-// javascript: (function () {
-//   var e = document.createElement("textarea");
-//   document.body.appendChild(e);
-//   e.value = `'${document.cookie.match(/Epsilon=([^;]+)/)[1]}'`;
-//   e.select();
-//   document.execCommand("copy");
-//   document.body.removeChild(e);
-//   alert("Cookie copiada");
-// })();

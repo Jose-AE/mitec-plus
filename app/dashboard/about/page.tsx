@@ -71,39 +71,16 @@ export default function Page() {
                 <Box>
                   <Heading size="xs">Creador</Heading>
                   <Text pt="2" fontSize="sm">
-                    Soy José, un joven de 19 años que actualmente terminó el
-                    segundo semestre de la carrera de Ingeniería en Tecnologías
-                    Computacionales, si leiste bien, 2ndo es decir no he visto
-                    absolutamente nada relacionado a mi carrera (solo como 2
-                    clases de programacion basica) solo he llevado clases de
-                    física, matemáticas, etc, en resumen una pérdida abismal de
-                    dinero y tiempo. Como ya son vacaciones y estoy aburrido
-                    decidí que mi próximo proyecto personal iba a ser rehacer la
-                    página de Mitec de manera correcta y funcional y de ahí
-                    surgió Mitec+.
-                    <br />
-                    <br />
-                    Me resulta incomprensible cómo una institución educativa de
-                    renombre, como el TEC y que cuenta con un presupuesto
-                    considerable (Considerando cuánto pagamos en el tronco común
-                    para clases que no sirven de nada), no haya logrado mejorar
-                    su infraestructura web. Con tantos recursos económicos
-                    disponibles, sería de esperar que la institución invierta en
-                    la actualización y optimización de su infraestructura
-                    digital. La falta de mejoras en las páginas web del TEC es
-                    una clara evidencia de una gestión ineficiente de los
-                    recursos y una falta de atención a las necesidades de los
-                    estudiantes. Literalmente me tarde 1 semana en hacer Mitec+
-                    y soy una sola persona y aparte de eso voy en segundo
-                    semestre de la carrera, cómo es que un equipo de varias
-                    personas con mucho más experiencia(?) no pueden hacer algo
-                    mejor?
-                    <br />
-                    <br />
-                    Desarrolle Mitec+ utilizando el framework de Next.js 13 con
-                    React, empleando Typescript y la librería de componentes
-                    Chakra UI. Si estás interesado en revisar el código, puedes
-                    encontrarlo disponible en mi perfil de{" "}
+                    Soy José, un joven de 19 años que actualmente está empezando
+                    tercer semestre de la carrera de Ingeniería en Tecnologías
+                    Computacionales. Durante las vacaciones, estaba aburrido,
+                    así que decidí que mi próximo proyecto personal iba a ser
+                    rehacer la página de Mitec de manera correcta y funcional,
+                    surgiendo así Mitec+. Desarrollé Mitec+ en aproximadamente
+                    una semana utilizando el framework de Next.js 13 con React,
+                    empleando Typescript y la librería de componentes Chakra UI.
+                    Si estás interesado en revisar el código, puedes encontrarlo
+                    disponible en mi perfil de{" "}
                     <Link
                       href="https://github.com/Jose-AE/mitec-plus"
                       color="blue.400"

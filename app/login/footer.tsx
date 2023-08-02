@@ -73,17 +73,6 @@ export default function Footer() {
           alignItems="center"
           gap={8}
         >
-          <Link target="_blank" href="https://tec.mx/">
-            © 2023 Tecnológico de Monterrey
-          </Link>
-          <Link target="_blank" href="https://tec.mx/es/avisos-de-privacidad">
-            Aviso de privacidad
-          </Link>
-
-          <Link target="_blank" href="https://letica.mx/ETHOS">
-            ETHOS
-          </Link>
-
           <Link target="_blank" href="/about">
             Sobre Mitec+
           </Link>

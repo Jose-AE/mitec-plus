@@ -5,39 +5,37 @@ import {
   Box,
   Input,
   Stack,
-  Link,
   Button,
   Text,
   useColorModeValue,
   InputGroup,
   InputLeftElement,
   Modal,
-  useBreakpointValue,
   useToast,
   Accordion,
   AccordionIcon,
   AccordionPanel,
   AccordionItem,
   AccordionButton,
-  UnorderedList,
-  ListItem,
-  Code,
-  Kbd,
-  Tooltip,
-  Badge,
-  IconButton,
+  useDisclosure,
+  ModalOverlay,
+  ModalHeader,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
 } from "@chakra-ui/react";
 
 import { setCookie } from "cookies-next";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { MdLockOutline, MdOutlineCookie } from "react-icons/md";
+import { MdOutlineCookie } from "react-icons/md";
 import MitecLogo from "../dashboard/components/MitecLogo";
-import { useState, ReactNode } from "react";
+import { useState } from "react";
 import Footer from "./footer";
 import axios from "axios";
 import TutorialCarousel from "./TutorialCarousel";
 
 export default function Page() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const toast = useToast();
 
   const [userCookie, setUserCookie] = useState("");
@@ -110,6 +108,49 @@ export default function Page() {
 
   return (
     <>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay
+          bg="blackAlpha.300"
+          backdropFilter="blur(10px) hue-rotate(0deg)"
+        />
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Mitec+ Demo</ModalHeader>
+
+          <ModalBody>
+            Estás por acceder al modo demo de Mitec+. Este modo te permite
+            explorar la interfaz y todas las funcionalidades que Mitec+ ofrece,
+            utilizando datos ficticios para representar clases y calificaciones.
+            Si deseas visualizar tus datos reales, como tus calificaciones,
+            horarios y clases, inicia sesión con tu cookie. Las instrucciones
+            sobre cómo obtener la cookie se encuentran en el menú desplegable
+            que dice “como obtener cookie”.
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Regresar
+            </Button>
+            <Button
+              onClick={() => {
+                setLoading(true);
+                setCookie(
+                  "token",
+                  JSON.stringify({
+                    JWT: "",
+                    oAuth: "",
+                    demo: "true",
+                  })
+                );
+                window.location.href = "/dashboard";
+              }}
+            >
+              Continuar en modo Demo
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
       <Flex
         minH={{ base: `calc(100vh - ${230}px)`, md: `calc(100vh - ${80}px)` }}
         align={"center"}
@@ -173,49 +214,29 @@ export default function Page() {
                   <h2>
                     <AccordionButton>
                       <Box as="span" flex="1" textAlign="left">
-                        ¿Es seguro?
+                        Que es la cookie?
                       </Box>
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    ¡Sí! Una vez que ingreses tu cookie, esta se guardará
-                    únicamente en tu navegador y no se enviará a ningún otro
-                    lugar para su almacenamiento. Solo será utilizada para
-                    obtener información como tus materias, calificaciones y
-                    nombre. Además, en caso de que se llegara a filtrar, la
-                    cookie tiene una fecha de expiración de 1 hora, por lo que
-                    su utilidad sería limitada.
+                    Al ingresar a Mitec con tu cuenta, se crea un tipo de
+                    &quot;credencial digital temporal&quot; (cookie) con datos
+                    básicos como tu matrícula y la fecha de expiración, esta es
+                    usada por Mitec+ para acceder a los servidores de Mitec y
+                    acceder a cosas como tus calificaciones y horarios sin
+                    necesidad de tener que ingresar tu contraseña en Mitec+.
+                    Esta cookie, sólo se guarda en tu navegador y no es
+                    compartida con nadie, expira en 1 hora y es firmada por
+                    Mitec para prevenir falsificaciones.
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>
 
               <Flex gap={3}>
-                <Tooltip
-                  hasArrow
-                  label="Por si solo quieres ver la interfaz y las funciones que ofrece Mitec +, se usarán datos de demostración precargados como clases y calificaciones"
-                  bg="gray.300"
-                  color="black"
-                >
-                  <Button
-                    w="50%"
-                    isDisabled={loading}
-                    onClick={() => {
-                      setLoading(true);
-                      setCookie(
-                        "token",
-                        JSON.stringify({
-                          JWT: "",
-                          oAuth: "",
-                          demo: "true",
-                        })
-                      );
-                      window.location.href = "/dashboard";
-                    }}
-                  >
-                    Explorar demo
-                  </Button>
-                </Tooltip>
+                <Button w="50%" isDisabled={loading} onClick={onOpen}>
+                  Explorar demo
+                </Button>
 
                 <Button
                   id="cookie_button"

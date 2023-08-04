@@ -5,12 +5,12 @@ import {
   Code,
   IconButton,
   Kbd,
-  Link,
   ListItem,
   Text,
   useClipboard,
 } from "@chakra-ui/react";
 import { BiClipboard } from "react-icons/bi";
+import { Link } from "@chakra-ui/next-js";
 
 const bookmarkCode = `
 javascript: (function () {
@@ -35,10 +35,11 @@ const TutorialData: any = {
         image: "Tutorials/Desktop/Chrome/1.png",
         info: (
           <>
-            Presiona <Kbd>CTRL/⌘ + D</Kbd> o haz click en la estrella al final
-            de la barra de busqueda. Esto va a abrir el menú para agregar un
-            marcador, En carpeta selecciona &quot;Barra De Marcadores&quot; y
-            haz click en el Botón de &quot;Mas&quot;
+            Presiona <Kbd>CTRL/⌘ + D</Kbd> o haz clic en la estrella al final de
+            la barra de busqueda. Esto va a abrir el menú para agregar un
+            marcador, En carpeta selecciona &quot;Barra De
+            Marcadores&quot;/&quot;Barra De favoritos&quot; y haz clic en el
+            Botón de &quot;Mas&quot;
           </>
         ),
       },
@@ -61,7 +62,7 @@ const TutorialData: any = {
               Copiar codigo
             </Button>
             <br />
-            finalmente haz click en guardar
+            finalmente haz clic en guardar
           </>
         ),
       },
@@ -71,11 +72,17 @@ const TutorialData: any = {
           <>
             <Text fontSize={"sm"}>
               En la barra de marcadores debería aparecer. Si no ves la barra,
-              presiona <Kbd>CTRL/⌘ + SHIFT + B</Kbd>. Haz clic en el marcador
-              para acceder rápidamente a la página de Mitec. Este atajo te
-              ahorrará tiempo, pero no es necesario utilizarlo para cargar la
-              página de Mitec. Puedes ingresar directamente a la página y luego
-              continuar con el siguiente paso.
+              presiona <Kbd>CTRL/⌘ + SHIFT + B</Kbd>. Ahora ingresa a la página
+              oficial de{" "}
+              <Link
+                href="https://mitec.itesm.mx/"
+                color="blue.400"
+                target={"_blank"}
+                _hover={{ color: "blue.500" }}
+              >
+                Mitec
+              </Link>{" "}
+              con tu usuario y contraseña y continua al siguiente paso
             </Text>
           </>
         ),
@@ -84,10 +91,10 @@ const TutorialData: any = {
         image: "Tutorials/Desktop/Chrome/4.png",
         info: (
           <>
-            Ya que estes en el tablero de Mitec haz click en el marcador que
+            Ya que estes en el tablero de Mitec haz clic en el marcador que
             creaste, para que se muestre tu cookie y se copie automaticamente,
-            haz click en aceptar y automaticamente regresaras a Mitec+ para
-            poder pegar tu cookie
+            haz clic en aceptar y automaticamente regresaras a Mitec+ para poder
+            pegar tu cookie
           </>
         ),
       },
@@ -96,9 +103,9 @@ const TutorialData: any = {
         info: (
           <>
             Listo! ahora cada vez que necesites reingresar tu cookie solo tienes
-            qué hacer click en el marcador y ya que estes en la página de inicio
-            de mitec haz click denuevo en el marcador para copiar to cookie y
-            regresar a Mitec+
+            que ingresar a la página oficial de Mitec con tu usuario y
+            contraseña y ya que estes en el tablero hacer clic en el marcador
+            para copiar tu cookie y regresar a Mitec+ para ingresarla.
           </>
         ),
       },
@@ -108,19 +115,19 @@ const TutorialData: any = {
       {
         image: "Tutorials/Mobile/Chrome/1.png",
         info: (
-          <>Haz click en los 3 puntos que se encuntran arriba a la derecha</>
+          <>Haz clic en los 3 puntos que se encuntran arriba a la derecha</>
         ),
       },
       {
         image: "Tutorials/Mobile/Chrome/2.png",
-        info: <>Haz click en la estrella, esto va a crear un marcador</>,
+        info: <>Haz clic en la estrella, esto va a crear un marcador</>,
       },
       {
         image: "Tutorials/Mobile/Chrome/3.png",
         info: (
           <>
             Ahora hasta abajo va a salir un mesaje diciendo que se salvo el
-            marcador, haz click en el boton de editar
+            marcador, haz clic en el boton de editar
           </>
         ),
       },
@@ -144,7 +151,7 @@ const TutorialData: any = {
               Copiar codigo
             </Button>
             <br />
-            finalmente haz click en la flecha para salvar
+            finalmente haz clic en la flecha para salvar
           </>
         ),
       },
@@ -152,10 +159,18 @@ const TutorialData: any = {
         image: "Tutorials/Mobile/Chrome/5.png",
         info: (
           <>
-            Entra a la pagina de Mitec con tu cuenta y ya que estes en el
-            tablero principal haz click en la barra de busqueda y busca el
-            nombre que le pusiste al marcador, finalmente haz click en el
-            marcador
+            Ingresa a la página oficial de{" "}
+            <Link
+              href="https://mitec.itesm.mx/"
+              color="blue.400"
+              target={"_blank"}
+              _hover={{ color: "blue.500" }}
+            >
+              Mitec
+            </Link>{" "}
+            con tu usuario y contraseña y ya que estes en el tablero principal
+            haz clic en la barra de busqueda y busca el nombre que le pusiste al
+            marcador, finalmente haz clic en el marcador
           </>
         ),
       },
@@ -163,11 +178,11 @@ const TutorialData: any = {
         image: "Tutorials/Mobile/Chrome/6.png",
         info: (
           <>
-            Ya que hiciste click en el marcador tu cookie se va a copiar
+            Ya que hiciste clic en el marcador tu cookie se va a copiar
             automaticamente y te va a aparecer un mensaje de que se copio(en
             caso de que no se haya copiado la puedes copiar
-            manualmente),finalmente haz click en &quot;ok&quot; y
-            automaticamente te va a redirigir a Mitec+ para que la pegues.
+            manualmente),finalmente haz clic en &quot;ok&quot; y automaticamente
+            te va a redirigir a Mitec+ para que la pegues.
           </>
         ),
       },
@@ -176,9 +191,18 @@ const TutorialData: any = {
         info: (
           <>
             Listo! ahora cada vez que necesites reingresar tu cookie solo tienes
-            qué ingresar a la pagina de inicio de Mitec y en la barra de
-            busqueda buscar el nombre del marcador que creaste y hacer click en
-            el para copiar tu cookie.
+            qué ingresar a la pagina oficial de{" "}
+            <Link
+              href="https://mitec.itesm.mx/"
+              color="blue.400"
+              target={"_blank"}
+              _hover={{ color: "blue.500" }}
+            >
+              Mitec
+            </Link>{" "}
+            con tu usuario y contraseña y ya que estes en el tablero principal
+            hacer clic en la barra de busqueda y busca el nombre que le pusiste
+            al marcador y hacer clic en el.
           </>
         ),
       },
@@ -191,10 +215,10 @@ const TutorialData: any = {
         image: "Tutorials/Desktop/Firefox/1.png",
         info: (
           <>
-            Presiona <Kbd>CTRL/⌘ + D</Kbd> o haz click en la estrella al final
-            de la barra de busqueda. Esto va a abrir el menú para agregar un
+            Presiona <Kbd>CTRL/⌘ + D</Kbd> o haz clic en la estrella al final de
+            la barra de busqueda. Esto va a abrir el menú para agregar un
             marcador, En carpeta selecciona &quot;Barra De Marcadores&quot; y
-            haz click en el Botón de &quot;Salvar&quot;
+            haz clic en el Botón de &quot;Salvar&quot;
           </>
         ),
       },
@@ -204,7 +228,7 @@ const TutorialData: any = {
           <>
             Ahora en la barra de marcadores te deberia de aparecer el marcador,
             si no te aparece la barra presiona <Kbd>CTRL/⌘ + SHIFT + B</Kbd> Haz
-            click derecho en el marcador y seleciona editar marcador.
+            clic derecho en el marcador y seleciona editar marcador.
           </>
         ),
       },
@@ -227,7 +251,7 @@ const TutorialData: any = {
               Copiar codigo
             </Button>
             <br />
-            finalmente haz click en guardar
+            finalmente haz clic en guardar
           </>
         ),
       },
@@ -235,10 +259,18 @@ const TutorialData: any = {
         image: "Tutorials/Desktop/Firefox/4.png",
         info: (
           <>
-            Ahora haz click en el marcador, este te va a llevar a la pagina de
-            Mitec, esto es para salvar tiempo, no nesesitas usar este atajo para
-            cargar la pagina de Mitec, puedes solo ingresar directamente y
-            despues seguir al siguiente paso
+            En la barra de marcadores debería aparecer. Si no ves la barra,
+            presiona <Kbd>CTRL/⌘ + SHIFT + B</Kbd>. Ahora ingresa a la página
+            oficial de{" "}
+            <Link
+              href="https://mitec.itesm.mx/"
+              color="blue.400"
+              target={"_blank"}
+              _hover={{ color: "blue.500" }}
+            >
+              Mitec
+            </Link>{" "}
+            con tu usuario y contraseña y continua al siguiente paso
           </>
         ),
       },
@@ -246,10 +278,10 @@ const TutorialData: any = {
         image: "Tutorials/Desktop/Firefox/5.png",
         info: (
           <>
-            Ya que estes en el tablero de Mitec haz click en el marcador que
+            Ya que estes en el tablero de Mitec haz clic en el marcador que
             creaste, para que se muestre tu cookie y se copie automaticamente,
-            haz click en aceptar y automaticamente regresaras a Mitec+ para
-            poder pegar tu cookie
+            haz clic en aceptar y automaticamente regresaras a Mitec+ para poder
+            pegar tu cookie
           </>
         ),
       },
@@ -258,9 +290,9 @@ const TutorialData: any = {
         info: (
           <>
             Listo! ahora cada vez que necesites reingresar tu cookie solo tienes
-            qué hacer click en el marcador y ya que estes en la página de inicio
-            de mitec haz click denuevo en el marcador para copiar to cookie y
-            regresar a Mitec+
+            que ingresar a la página oficial de Mitec con tu usuario y
+            contraseña y ya que estes en el tablero hacer clic en el marcador
+            para copiar tu cookie y regresar a Mitec+ para ingresarla.
           </>
         ),
       },
@@ -270,11 +302,186 @@ const TutorialData: any = {
   safari: {
     //-------------------------------------Safari desktop--------------------------------------------------- */
 
-    desktop: [{ image: "", info: "" }],
+    desktop: [
+      {
+        image: "Tutorials/Desktop/Safari/1.png",
+        info: (
+          <>
+            Haz clic en el boton de compartir al final de la barra de busqueda.
+            Esto va a abrir un menú, haz clic en &quot;Agregar Marcador&quot;
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Desktop/Safari/2.png",
+        info: (
+          <>
+            En carpeta selecciona &quot;Favoritos&quot; y haz clic en el Botón
+            de &quot;Agregar&quot;
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Desktop/Safari/3.png",
+        info: (
+          <>
+            Ahora vete hasta arriba y en la parte de marcadores selecciona
+            &quot;mostrar marcadores&quot;
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Desktop/Safari/4.png",
+        info: (
+          <>
+            Ya que estes en la barra de marcadores haz clic derecho en el
+            marcador que acabas de crear y después haz clic en editar dirección,
+            elimina el contenido actual y copia y pega el siguiente codigo
+            <Button
+              m="4px"
+              size={"sm"}
+              onClick={() => {
+                navigator.clipboard.writeText(bookmarkCode);
+              }}
+              zIndex={10}
+              leftIcon={<BiClipboard />}
+              variant="solid"
+            >
+              Copiar codigo
+            </Button>
+            <br />
+            finalmente haz clic en listo
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Desktop/Safari/5.png",
+        info: (
+          <>
+            Ahora ingresa a la página oficial de{" "}
+            <Link
+              href="https://mitec.itesm.mx/"
+              color="blue.400"
+              target={"_blank"}
+              _hover={{ color: "blue.500" }}
+            >
+              Mitec
+            </Link>{" "}
+            con tu usuario y contraseña y ya que estes en el tablero principal
+            haz clic en el marcador que creaste para que se muestre tu cookie y
+            se copie automáticamente, haz clic en ok y automaticamente
+            regresaras a Mitec+ para poder pegar tu cookie
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Desktop/Safari/6.png",
+        info: (
+          <>
+            Listo! ahora cada vez que necesites reingresar tu cookie solo tienes
+            que ingresar a la página oficial de Mitec con tu usuario y
+            contraseña y ya que estes en el tablero hacer clic en el marcador
+            para copiar tu cookie y regresar a Mitec+ para ingresarla.
+          </>
+        ),
+      },
+    ],
 
     //-------------------------------------Safari Mobile--------------------------------------------------- */
 
-    mobile: [{ image: "", info: "" }],
+    mobile: [
+      {
+        image: "Tutorials/Mobile/Safari/1.png",
+        info: (
+          <>
+            Haz clic en el símbolo de compartir debajo de la barra de búsqueda
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Mobile/Safari/2.png",
+        info: (
+          <>Haz clic en Agregar a Marcadores, esto va a crear un marcador</>
+        ),
+      },
+      {
+        image: "Tutorials/Mobile/Safari/3.png",
+        info: (
+          <>
+            En ubicación selecciona &quot;Favoritos&quot; y haz clic en guardar
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Mobile/Safari/4.png",
+        info: (
+          <>Haz clic en el símbolo del libro debajo de la barra de búsqueda</>
+        ),
+      },
+      {
+        image: "Tutorials/Mobile/Safari/5.png",
+        info: (
+          <>
+            Selecciona favoritos y despues haz clic en editar y finalmente haz
+            clic en la flecha del marcador que creaste
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Mobile/Safari/6.png",
+        info: (
+          <>
+            En la sección de URL, elimina el contenido actual y copia y pega el
+            siguiente codigo
+            <Button
+              m="4px"
+              size={"sm"}
+              onClick={() => {
+                navigator.clipboard.writeText(bookmarkCode);
+              }}
+              zIndex={10}
+              leftIcon={<BiClipboard />}
+              variant="solid"
+            >
+              Copiar codigo
+            </Button>
+            <br />
+            finalmente haz clic en aceptar
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Mobile/Safari/7.png",
+        info: (
+          <>
+            Ahora ingresa a la página oficial de{" "}
+            <Link
+              href="https://mitec.itesm.mx/"
+              color="blue.400"
+              target={"_blank"}
+              _hover={{ color: "blue.500" }}
+            >
+              Mitec
+            </Link>{" "}
+            con tu usuario y contraseña y ya que estes en el tablero principal
+            haz clic en el marcador que creaste para que se muestre tu cookie y
+            se copie automáticamente, haz clic en ok y automaticamente
+            regresaras a Mitec+ para poder pegar tu cookie
+          </>
+        ),
+      },
+      {
+        image: "Tutorials/Mobile/Safari/8.png",
+        info: (
+          <>
+            Listo! ahora cada vez que necesites reingresar tu cookie solo tienes
+            que ingresar a la página oficial de Mitec con tu usuario y
+            contraseña y ya que estes en el tablero hacer clic en el marcador
+            para copiar tu cookie y regresar a Mitec+ para ingresarla.
+          </>
+        ),
+      },
+    ],
   },
   opera: {
     desktop: [{ image: "", info: "" }],
@@ -290,11 +497,11 @@ const TutorialData: any = {
       info: (
         <Text>
           Ingresa a{" "}
-          <Link color="blue.500" href="https://mitec.itesm.mx" isExternal>
+          <Link color="blue.500" href="https://mitec.itesm.mx">
             Mitec <ExternalLinkIcon mx="2px" />
           </Link>{" "}
-          e ingresa con tu cuenta Cuando estes en el tablero presiona{" "}
-          <Kbd>F12</Kbd> Ingresa el siguiente comando en la consola:{" "}
+          e ingresa con tu cuenta. Cuando estes en el tablero presiona{" "}
+          <Kbd>F12</Kbd> y en la consola ingresa el siguiente comando:{" "}
           <Code>document.cookie.match(/Epsilon=([^;]+)/)[1]</Code> Esto va a
           imprimir tu cookie, copiala y pegala arriba
         </Text>

@@ -53,6 +53,13 @@ export default function About() {
               aproximadamente 1 hora, esto es por que los de Mitec decidieron
               ponerle una expiración muy corta a las sesiones, por eso Mitec te
               pide a cada rato que re-ingreses tu cuenta.
+              <br />
+              <br />
+              Mitec+ continúa utilizando los servidores de Mitec, por lo que si
+              no te salen algunas calificaciones o clases, es probable que se
+              deba a problemas con sus servidores (es decir tampoco en el sitio
+              oficial de mitec te van a aparecer). Si esto llegara a ocurrir, te
+              recomendamos intentar ingresar nuevamente a Mitec+ más tarde.
             </Text>
           </Box>
           <Box>

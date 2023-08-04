@@ -55,9 +55,14 @@ const SocialButton = ({
 
 export default function Footer() {
   return (
-    <Box
+    <Flex
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
+      position={"fixed"}
+      left="0"
+      bottom={"0"}
+      width={"100%"}
+      zIndex={"-1"}
     >
       <Container
         as={Stack}
@@ -111,6 +116,6 @@ export default function Footer() {
           </SocialButton>
         </Stack>
       </Container>
-    </Box>
+    </Flex>
   );
 }

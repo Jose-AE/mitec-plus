@@ -11,7 +11,6 @@ import {
 import { BiClipboard, BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 import TutorialData from "./TutorialData";
-import { debug } from "console";
 
 function getBrowserInstructions() {
   //return TutorialData["chrome"].mobile; //remove line, just testing
@@ -26,7 +25,7 @@ function getBrowserInstructions() {
   var os = [
     { name: "Android", value: "Android" },
     { name: "iPhone", value: "iPhone" },
-    { name: "iPad", value: "Mac" },
+    //{ name: "iPad", value: "Mac" },
     { name: "Macintosh", value: "Mac" },
     { name: "Linux", value: "Linux" },
     { name: "Windows", value: "Win" },
@@ -43,37 +42,36 @@ function getBrowserInstructions() {
   }
   for (let i in os) {
     if (userDetails.includes(os[i].value)) {
-      userOS = os[i].name;
+      if (userDetails.includes("iPad")) {
+        userOS = "iPhone"; // convert ipad to iphone
+      } else {
+        userOS = os[i].name;
+      }
       break;
     }
   }
 
   console.log(userOS, userBrowser);
+  console.log(userDetails);
 
   if (userOS === "Windows" && userBrowser === "Chrome")
-    return TutorialData.chrome.desktop; //
+    return TutorialData.chrome.desktop; // Verified
   else if (userOS === "Windows" && userBrowser === "Firefox")
-    return TutorialData.firefox.desktop; //
+    return TutorialData.firefox.desktop; //Verified
   else if (userOS === "Macintosh" && userBrowser === "Safari")
-    return TutorialData.firefox.desktop;
+    return TutorialData.safari.desktop; // Verified
   else if (userOS === "Macintosh" && userBrowser === "Firefox")
-    return TutorialData.firefox.desktop; //
+    return TutorialData.firefox.desktop; //Verified
   else if (userOS === "Macintosh" && userBrowser === "Chrome")
-    return TutorialData.chrome.desktop; //
-  else if (
-    (userOS === "iPad" || userOS === "iPhone") &&
-    userBrowser === "Safari"
-  )
-    return TutorialData.chrome.mobile;
-  else if (
-    (userOS === "iPad" || userOS === "iPhone") &&
-    userBrowser === "Safari"
-  )
-    return TutorialData.chrome.mobile; //
+    return TutorialData.chrome.desktop; // Verified
+  else if (userOS === "iPhone" && userBrowser === "Safari")
+    return TutorialData.safari.mobile; //Verified
+  else if (userOS === "iPhone" && userBrowser === "Chrome")
+    return TutorialData.chrome.mobile; //Verified
   else if (userOS === "Android" && userBrowser === "Chrome")
-    return TutorialData.chrome.mobile; //
+    return TutorialData.chrome.mobile; //Verified
   /////
-  else return TutorialData.default;
+  else return TutorialData.default; //Verified
 }
 
 // Settings for the slider

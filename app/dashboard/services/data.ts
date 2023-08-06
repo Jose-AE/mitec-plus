@@ -47,8 +47,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 17:00:00 -06:00",
       Milisegundos: "/Date(1554764400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/03-consultadatosgenerales.png",
+    Icono: "https://i.imgur.com/nVlofu6.png",
     Id: 8,
     ImagenFondo: "",
     Nombre: "Consulta de datos generales",
@@ -77,8 +76,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 17:00:00 -06:00",
       Milisegundos: "/Date(1554764400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/04-consultadehorario.png",
+    Icono: "https://i.imgur.com/8Vw0LUE.png",
     Id: 9,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/horario.png",
@@ -108,8 +106,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-11-01 00:00:00 -06:00",
       Milisegundos: "/Date(1572588000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/codigo-de-etica.png",
+    Icono: "https://i.imgur.com/4ZOWTRn.png",
     Id: 10,
     ImagenFondo: "",
     Nombre: "Unidades de Formación cursadas",
@@ -138,8 +135,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 17:00:00 -06:00",
       Milisegundos: "/Date(1554764400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/06-consultaresultadosexamenes.png",
+    Icono: "https://i.imgur.com/76TTaRe.png",
     Id: 11,
     ImagenFondo: "",
     Nombre: "Exámenes y certificados",
@@ -169,8 +165,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 17:00:00 -06:00",
       Milisegundos: "/Date(1554764400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/07-consultacalendario.png",
+    Icono: "https://i.imgur.com/B6ylREW.png",
     Id: 12,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Mas_visitados/calendario.png",
@@ -200,8 +195,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/11-apoyoseducativos.png",
+    Icono: "https://i.imgur.com/jpPSgNj.png",
     Id: 17,
     ImagenFondo:
       "https://mitec.itesm.mx/AlumnosTEC20/PublishingImages/Recomendados/apoyo%20educativo.png",
@@ -232,8 +226,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/13-estadodecuenta.png",
+    Icono: "https://i.imgur.com/4fHWRWO.png",
     Id: 19,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/Edo.%20cuenta.png",
@@ -264,8 +257,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/16-compraenlinea.png",
+    Icono: "https://i.imgur.com/j1m3GuL.png",
     Id: 22,
     ImagenFondo: "",
     Nombre: "Tienda Virtual",
@@ -293,8 +285,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/18-facturacionelectronica.png",
+    Icono: "https://i.imgur.com/9NZlSbd.png",
     Id: 24,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/facturacion%20electronica.png",
@@ -324,8 +315,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/20-facturasseguros.png",
+    Icono: "https://i.imgur.com/2QdEYGo.png",
     Id: 26,
     ImagenFondo: "",
     Nombre: "Información y facturas de seguros",
@@ -354,8 +344,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/LogoOCIvertical_Tec.jpg",
+    Icono: "https://i.imgur.com/Nn3I1lz.jpg",
     Id: 27,
     ImagenFondo: "",
     Nombre: "On Campus Interns ",
@@ -384,8 +373,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-06-06 10:00:00 -06:00",
       Milisegundos: "/Date(1559836800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/25-reglamentos.png",
+    Icono: "https://i.imgur.com/BuWX8Td.png",
     Id: 38,
     ImagenFondo: "",
     Nombre: "Firma de Código de Integridad Académica",
@@ -413,8 +401,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-06-06 10:00:00 -06:00",
       Milisegundos: "/Date(1559836800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/25-reglamentos.png",
+    Icono: "https://i.imgur.com/BuWX8Td.png",
     Id: 41,
     ImagenFondo: "",
     Nombre: "Protocolo de Violencia de Género",
@@ -442,8 +429,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-06-06 10:00:00 -06:00",
       Milisegundos: "/Date(1559836800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/25-reglamentos.png",
+    Icono: "https://i.imgur.com/BuWX8Td.png",
     Id: 42,
     ImagenFondo: "",
     Nombre: "Código de integridad académica",
@@ -471,8 +457,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-06-06 10:00:00 -06:00",
       Milisegundos: "/Date(1559836800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/25-reglamentos.png",
+    Icono: "https://i.imgur.com/BuWX8Td.png",
     Id: 43,
     ImagenFondo: "",
     Nombre: "Student Code of Honor",
@@ -500,8 +485,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-06-06 10:00:00 -06:00",
       Milisegundos: "/Date(1559836800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/25-reglamentos.png",
+    Icono: "https://i.imgur.com/BuWX8Td.png",
     Id: 53,
     ImagenFondo: "",
     Nombre: "Academic regulations for undergraduate students",
@@ -529,8 +513,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-08-27 00:00:00 -06:00",
       Milisegundos: "/Date(1566885600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/07-consultacalendario.png",
+    Icono: "https://i.imgur.com/qEsltWD.png",
     Id: 62,
     ImagenFondo: "",
     Nombre: "Solicitud de citas",
@@ -559,8 +542,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-07-04 12:00:00 -06:00",
       Milisegundos: "/Date(1562263200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/j2wCyRh.png",
     Id: 63,
     ImagenFondo: "",
     Nombre: "Acreditación por certificado COURSERA Matemáticas ",
@@ -589,8 +571,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-07-04 12:00:00 -06:00",
       Milisegundos: "/Date(1562263200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/j2wCyRh.png",
     Id: 64,
     ImagenFondo: "",
     Nombre: "Acreditación por certificado COURSERA Física ",
@@ -619,8 +600,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-07-04 12:00:00 -06:00",
       Milisegundos: "/Date(1562263200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/j2wCyRh.png",
     Id: 65,
     ImagenFondo: "",
     Nombre: "Acreditación por certificado COURSERA Fundamentos de Escritura ",
@@ -650,8 +630,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-07-01 15:00:00 -06:00",
       Milisegundos: "/Date(1562014800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/18-facturacionelectronica.png",
+    Icono: "https://i.imgur.com/V4IhSMS.png",
     Id: 67,
     ImagenFondo: "",
     Nombre: "Solicitud de reembolso ",
@@ -680,8 +659,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-08-06 00:05:00 -06:00",
       Milisegundos: "/Date(1565071500000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/j2wCyRh.png",
     Id: 68,
     ImagenFondo: "",
     Nombre: "Acreditación por certificado Udemy Computación",
@@ -709,8 +687,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-08-02 11:00:00 -06:00",
       Milisegundos: "/Date(1564765200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/32-biblioteca.png",
+    Icono: "https://i.imgur.com/z3qMJ7D.png",
     Id: 69,
     ImagenFondo: "",
     Nombre: "Biblioteca Tec",
@@ -739,8 +716,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/26-encontacto.png",
+    Icono: "https://i.imgur.com/5lXG6A6.png",
     Id: 70,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Mas_visitados/software.png",
@@ -771,8 +747,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-08-02 11:00:00 -06:00",
       Milisegundos: "/Date(1564765200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/11-apoyoseducativos.png",
+    Icono: "https://i.imgur.com/i0nayMw.png",
     Id: 72,
     ImagenFondo: "",
     Nombre: "Tutoriales de tecnología educativa",
@@ -801,8 +776,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-08-01 11:00:00 -06:00",
       Milisegundos: "/Date(1564678800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/tutorial_guia_tec21.png",
+    Icono: "https://i.imgur.com/uwsNDKj.png",
     Id: 77,
     ImagenFondo: "",
     Nombre: "Tec 21 la guía básica",
@@ -831,8 +805,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-09-09 10:00:00 -06:00",
       Milisegundos: "/Date(1568044800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/ECOA.fw.png",
+    Icono: "https://i.imgur.com/zH7OASc.png",
     Id: 80,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/ECOA.png",
@@ -862,8 +835,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-09-19 00:00:00 -06:00",
       Milisegundos: "/Date(1568872800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/03-consultadatosgenerales.png",
+    Icono: "https://i.imgur.com/KJW24Mz.png",
     Id: 81,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/bolsa%20de%20trabajo.png",
@@ -894,8 +866,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-10-08 01:00:00 -06:00",
       Milisegundos: "/Date(1570518000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/j2wCyRh.png",
     Id: 82,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/plan%20de%20estudios.png",
@@ -926,8 +897,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/11-apoyoseducativos.png",
+    Icono: "https://i.imgur.com/jpPSgNj.png",
     Id: 83,
     ImagenFondo: "",
     Nombre: "Video tutorial de Formalización de Préstamo Educativo",
@@ -956,8 +926,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-03-08 00:05:00 -06:00",
       Milisegundos: "/Date(1678255500000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/10-cambiocarrera.png",
+    Icono: "https://i.imgur.com/mcOQHC9.png",
     Id: 85,
     ImagenFondo: "",
     Nombre: "Cambio de Carrera de egreso ",
@@ -986,8 +955,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-10-23 10:00:00 -06:00",
       Milisegundos: "/Date(1571846400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/05-consultadematerias.png",
+    Icono: "https://i.imgur.com/SI6SQeC.png",
     Id: 86,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/graduacion.png",
@@ -1018,8 +986,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-03-08 00:05:00 -06:00",
       Milisegundos: "/Date(1678255500000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/10-cambiocarrera.png",
+    Icono: "https://i.imgur.com/mcOQHC9.png",
     Id: 89,
     ImagenFondo: "",
     Nombre: "Solicitud de Transferencia",
@@ -1048,8 +1015,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-12-11 00:00:00 -06:00",
       Milisegundos: "/Date(1576044000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/Logotipo_Residencias%20Tec.jpg",
+    Icono: "https://i.imgur.com/vRmla0y.jpg",
     Id: 97,
     ImagenFondo: "",
     Nombre: "Residencias",
@@ -1078,8 +1044,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-08 18:00:00 -06:00",
       Milisegundos: "/Date(1554768000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/15-anticipocolegiatura.png",
+    Icono: "https://i.imgur.com/9fNYwUZ.png",
     Id: 108,
     ImagenFondo: "",
     Nombre: "Cuotas de Colegiatura y Políticas de Pago (Reembolsos)",
@@ -1109,8 +1074,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-11-23 11:00:00 -06:00",
       Milisegundos: "/Date(1574528400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/Avisos/02_bits_tips.png",
+    Icono: "https://i.imgur.com/YmtyVon.png",
     Id: 111,
     ImagenFondo: "",
     Nombre: "Bits & tips",
@@ -1139,8 +1103,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-04-13 01:00:00 -06:00",
       Milisegundos: "/Date(1586761200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/Life_at-Home_10.png",
+    Icono: "https://i.imgur.com/zOpgWs6.png",
     Id: 116,
     ImagenFondo: "",
     Nombre: "LiFE at home",
@@ -1170,8 +1133,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-05-18 10:00:00 -06:00",
       Milisegundos: "/Date(1589817600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/03-consultadatosgenerales.png",
+    Icono: "https://i.imgur.com/HRaANvr.png",
     Id: 120,
     ImagenFondo: "",
     Nombre: "Resultados de evaluación inicial",
@@ -1200,8 +1162,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-07-09 11:00:00 -06:00",
       Milisegundos: "/Date(1594314000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/logos_hy.jpg",
+    Icono: "https://i.imgur.com/opPs3h7.jpg",
     Id: 124,
     ImagenFondo: "",
     Nombre: "HyFlexPlus",
@@ -1230,8 +1191,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-10-16 18:00:00 -06:00",
       Milisegundos: "/Date(1602892800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/programas%20internacionales.png",
+    Icono: "https://i.imgur.com/3OvlEe0.png",
     Id: 127,
     ImagenFondo: "",
     Nombre: "Diploma Internacional",
@@ -1261,8 +1221,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-09-02 00:00:00 -06:00",
       Milisegundos: "/Date(1599026400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/multiplataforma.png",
+    Icono: "https://i.imgur.com/8Brg1DK.png",
     Id: 130,
     ImagenFondo: "",
     Nombre: "Multiplataforma",
@@ -1292,8 +1251,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-09-20 00:00:00 -06:00",
       Milisegundos: "/Date(1600581600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/solicitudbeca.png",
+    Icono: "https://i.imgur.com/WcqYnDM.png",
     Id: 132,
     ImagenFondo: "",
     Nombre: "Plan de Inversión Educativa",
@@ -1323,8 +1281,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-10-24 19:26:00 -06:00",
       Milisegundos: "/Date(1603589160000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/tyP0cDo.png",
     Id: 175,
     ImagenFondo: "",
     Nombre: "Curriculum Vitae: CONACYT (CVU)",
@@ -1353,7 +1310,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-10-24 19:26:00 -06:00",
       Milisegundos: "/Date(1603589160000-0600)/",
     },
-    Icono: "https://cdntec.azureedge.net/img/mitec21/herramientas/canvas.png",
+    Icono: "https://i.imgur.com/osfN7zp.png",
     Id: 179,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/Canva.png",
@@ -1384,8 +1341,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-10-24 19:26:00 -06:00",
       Milisegundos: "/Date(1603589160000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/dEZht3H.png",
     Id: 181,
     ImagenFondo: "",
     Nombre: "Encuesta Candidatos a Graduar (ECAG)",
@@ -1415,8 +1371,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-10-24 19:26:00 -06:00",
       Milisegundos: "/Date(1603589160000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/Iconos/tecstore.png",
+    Icono: "https://i.imgur.com/HqNTV6v.png",
     Id: 185,
     ImagenFondo: "",
     Nombre: "TECstore en linea",
@@ -1445,7 +1400,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2018-03-07 00:00:00 -06:00",
       Milisegundos: "/Date(1520402400000-0600)/",
     },
-    Icono: "",
+    Icono: "https://i.imgur.com/LnO7NR2.png",
     Id: 201,
     ImagenFondo: "",
     Nombre: "Integridad Académica",
@@ -1474,8 +1429,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2019-04-03 00:00:00 -06:00",
       Milisegundos: "/Date(1554271200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/guias.png",
+    Icono: "https://i.imgur.com/HWuzDmr.png",
     Id: 204,
     ImagenFondo: "",
     Nombre: "Guía de acceso a tu correo y re envío",
@@ -1503,8 +1457,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2020-12-18 17:00:00 -06:00",
       Milisegundos: "/Date(1608332400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/PublishingImages/iconos_tec21/Ceredih-icono-azul1.jpg",
+    Icono: "https://i.imgur.com/n4KFhTN.jpg",
     Id: 216,
     ImagenFondo: "",
     Nombre: "Centro de Reconocimiento de la Dignidad Humana",
@@ -1533,8 +1486,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-02-23 00:00:00 -06:00",
       Milisegundos: "/Date(1614060000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/icono_PIE.png",
+    Icono: "https://i.imgur.com/JUANPJ8.png",
     Id: 229,
     ImagenFondo: "",
     Nombre: "Conoce el Plan Inversión Educativa (PIE) ",
@@ -1564,8 +1516,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-02-23 00:00:00 -06:00",
       Milisegundos: "/Date(1614060000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/iconos_pago%20en%20linea.png",
+    Icono: "https://i.imgur.com/WmoOZvf.png",
     Id: 271,
     ImagenFondo: "",
     Nombre: "Pago desde Tu Estado de cuenta web",
@@ -1594,8 +1545,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-05-05 05:00:00 -06:00",
       Milisegundos: "/Date(1620212400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/mi_llave.png",
+    Icono: "https://i.imgur.com/fpWKVJF.png",
     Id: 303,
     ImagenFondo: "",
     Nombre: "Protege tu información",
@@ -1624,8 +1574,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-05-10 00:00:00 -06:00",
       Milisegundos: "/Date(1620626400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/36-plandeestudios.png",
+    Icono: "https://i.imgur.com/XOPjRb3.png",
     Id: 304,
     ImagenFondo: "",
     Nombre:
@@ -1656,8 +1605,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-06-14 00:00:00 -06:00",
       Milisegundos: "/Date(1623650400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/flexible_digital.png",
+    Icono: "https://i.imgur.com/gD5OxVY.png",
     Id: 306,
     ImagenFondo: "",
     Nombre: "Nivelación Flexible",
@@ -1686,8 +1634,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-05-27 00:00:00 -06:00",
       Milisegundos: "/Date(1622095200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/iconoulead.png",
+    Icono: "https://i.imgur.com/WkMScqk.png",
     Id: 307,
     ImagenFondo: "",
     Nombre: "Diploma U-LEAD",
@@ -1716,8 +1663,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-06-08 00:00:00 -06:00",
       Milisegundos: "/Date(1623132000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/454-centroidiomas.png",
+    Icono: "https://i.imgur.com/4DWP7Q6.png",
     Id: 312,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/Dominio%20del%20idioma%20ingl%C3%A9s.png",
@@ -1748,8 +1694,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-08-18 16:00:00 -06:00",
       Milisegundos: "/Date(1629324000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/02-actualizaciondatoscontacto.png",
+    Icono: "https://i.imgur.com/jkzbiZl.png",
     Id: 313,
     ImagenFondo: "",
     Nombre: "Envío de fotografía",
@@ -1778,8 +1723,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-06-17 00:00:00 -06:00",
       Milisegundos: "/Date(1623909600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/logos_hy.jpg",
+    Icono: "https://i.imgur.com/v5EFyXF.jpg",
     Id: 314,
     ImagenFondo: "",
     Nombre: "HyFlex+Tec Cursos Digitales",
@@ -1808,8 +1752,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-06-22 10:00:00 -06:00",
       Milisegundos: "/Date(1624377600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/08-planeat.png",
+    Icono: "https://i.imgur.com/GNaprSl.png",
     Id: 317,
     ImagenFondo: "",
     Nombre: "Experiencias TEC/i ",
@@ -1837,8 +1780,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-07-08 00:00:00 -06:00",
       Milisegundos: "/Date(1625724000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/33-circuitotec.png",
+    Icono: "https://i.imgur.com/AqPszfp.png",
     Id: 320,
     ImagenFondo: "",
     Nombre: "Transporte",
@@ -1867,8 +1809,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-08-01 11:00:00 -06:00",
       Milisegundos: "/Date(1627837200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/Iconos/markettec.jpg",
+    Icono: "https://i.imgur.com/CKBvCAs.jpg",
     Id: 324,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/Market%20TEC.png",
@@ -1899,8 +1840,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-08-26 00:00:00 -06:00",
       Milisegundos: "/Date(1629957600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/03-consultadatosgenerales.png",
+    Icono: "https://i.imgur.com/OwUdXkq.png",
     Id: 333,
     ImagenFondo: "",
     Nombre: "Modelo de Acompañamiento",
@@ -1930,8 +1870,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-10-18 00:00:00 -06:00",
       Milisegundos: "/Date(1634536800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/mividatec.png",
+    Icono: "https://i.imgur.com/hSgP8aT.png",
     Id: 338,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/Life@tec.png",
@@ -1961,8 +1900,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-11-15 00:00:00 -06:00",
       Milisegundos: "/Date(1636956000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/02-comunicado-institucional.png",
+    Icono: "https://i.imgur.com/iUDtRkt.png",
     Id: 339,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/Reglamentos.png",
@@ -1993,8 +1931,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-09-29 00:00:00 -06:00",
       Milisegundos: "/Date(1664431200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/iconocolorSB_6.png",
+    Icono: "https://i.imgur.com/IifSfCC.png",
     Id: 342,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/becarios.png",
@@ -2024,8 +1961,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2021-12-15 00:00:00 -06:00",
       Milisegundos: "/Date(1639548000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/TQueremos.png",
+    Icono: "https://i.imgur.com/wPYz1WX.png",
     Id: 344,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/TQueremos.png",
@@ -2055,8 +1991,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-06-06 08:00:00 -06:00",
       Milisegundos: "/Date(1654524000000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/serviciosocial22.png",
+    Icono: "https://i.imgur.com/Ct5Gsbo.png",
     Id: 346,
     ImagenFondo: "",
     Nombre: "Servicio Social",
@@ -2086,8 +2021,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-03-08 00:05:00 -06:00",
       Milisegundos: "/Date(1678255500000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/cambioetapa.png",
+    Icono: "https://i.imgur.com/dZYCewG.png",
     Id: 351,
     ImagenFondo: "",
     Nombre: "Definiendo Horizontes, Semestre Tec, Elección carrera",
@@ -2116,8 +2050,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-04-21 13:35:00 -06:00",
       Milisegundos: "/Date(1650569700000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/icono-cic.png",
+    Icono: "https://i.imgur.com/BHunZNn.png",
     Id: 356,
     ImagenFondo: "",
     Nombre: "CIC",
@@ -2146,8 +2079,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-06-16 00:00:00 -06:00",
       Milisegundos: "/Date(1655359200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/Iconos/constancias-icono-blanco.png",
+    Icono: "https://i.imgur.com/348rPU8.jpg",
     Id: 359,
     ImagenFondo:
       "https://mitec.itesm.mx/Alumnos/PublishingImages/Recomendados/constancias.png",
@@ -2177,8 +2109,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-06-27 08:00:00 -06:00",
       Milisegundos: "/Date(1656338400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/programas%20internacionales.png",
+    Icono: "https://i.imgur.com/CvGCjyI.png",
     Id: 361,
     ImagenFondo: "",
     Nombre: "Estudiantes Internacionales",
@@ -2208,8 +2139,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-06-27 08:00:00 -06:00",
       Milisegundos: "/Date(1656338400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/276-estudiaenelextranjero.png",
+    Icono: "https://i.imgur.com/CvGCjyI.png",
     Id: 363,
     ImagenFondo: "",
     Nombre: "Mi Experiencia internacional profesional",
@@ -2239,8 +2169,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-08-29 00:00:00 -06:00",
       Milisegundos: "/Date(1661752800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/admisiones1.png",
+    Icono: "https://i.imgur.com/26lpY3w.png",
     Id: 370,
     ImagenFondo: "",
     Nombre: "Solicitud de admisión y becas",
@@ -2269,8 +2198,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2022-11-22 00:00:00 -06:00",
       Milisegundos: "/Date(1669096800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/SEMANAS_TEC.png",
+    Icono: "https://i.imgur.com/0DBSh65.png",
     Id: 378,
     ImagenFondo: "",
     Nombre: "Semanas Tec",
@@ -2300,8 +2228,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-01-24 08:00:00 -06:00",
       Milisegundos: "/Date(1674568800000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/20-facturasseguros.png",
+    Icono: "https://i.imgur.com/lbivu5x.png",
     Id: 379,
     ImagenFondo: "",
     Nombre: "Mi Seguro de Gastos Médicos Mayores",
@@ -2330,8 +2257,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-01-21 18:00:00 -06:00",
       Milisegundos: "/Date(1674345600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/egresados/PublishingImages/mis-donatiovs-icon.png",
+    Icono: "https://i.imgur.com/184dOWH.png",
     Id: 380,
     ImagenFondo: "",
     Nombre: "Mis Donativos",
@@ -2361,8 +2287,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-03-14 00:00:00 -06:00",
       Milisegundos: "/Date(1678773600000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/colaboradores/PublishingImages/servicios_iconos/Iconos/conferencias-RDC.jpg",
+    Icono: "https://i.imgur.com/rdKzyzm.jpg",
     Id: 383,
     ImagenFondo: "",
     Nombre: "Conferencias Reunión de Consejeros",
@@ -2390,8 +2315,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-04-13 00:55:00 -06:00",
       Milisegundos: "/Date(1681368900000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Colaboradores/PublishingImages/servicios_iconos/Iconos/consejosynovedades.png",
+    Icono: "https://i.imgur.com/1HWblkU.png",
     Id: 387,
     ImagenFondo: "",
     Nombre: "Consejos y novedades",
@@ -2421,8 +2345,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-05-15 00:00:00 -06:00",
       Milisegundos: "/Date(1684130400000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/segurogastosmedicos.png",
+    Icono: "https://i.imgur.com/NvswJK6.png",
     Id: 391,
     ImagenFondo: "",
     Nombre: "Mis Seguros y Coberturas",
@@ -2452,8 +2375,7 @@ const SERVICES: ServiceInterface[] = [
       FormatoISO: "2023-05-12 00:00:00 -06:00",
       Milisegundos: "/Date(1683871200000-0600)/",
     },
-    Icono:
-      "https://mitec.itesm.mx/Alumnos/PublishingImages/iconos_tec21/encampus.png",
+    Icono: "https://i.imgur.com/mwbi8op.png",
     Id: 392,
     ImagenFondo: "",
     Nombre: "mis Servicios en Campus",
@@ -2464,6 +2386,35 @@ const SERVICES: ServiceInterface[] = [
     Subcategoria: "Seguridad",
     TipoIntegracion: "En sitio",
     URL: "https://mitec.itesm.mx/sites/ServAcad/S_VESTUDIANTIL/Mi%20Campus/En_campus/index.htm",
+  },
+  {
+    Acceso: "",
+    Agrupacion: "",
+    Categoria: "Servicios de Apoyo",
+    Clave: "",
+    Descripcion: "Portafolio para subir evidencias",
+    Favorito: false,
+    FechaCreacion: "/Date(1683917361000-0600)/",
+    FechaExpiracion: {
+      FormatoISO: null,
+      Milisegundos: "/Date(-62135575200000-0600)/",
+    },
+    FechaPublicacion: {
+      FormatoISO: "2023-05-12 00:00:00 -06:00",
+      Milisegundos: "/Date(1683871200000-0600)/",
+    },
+    Icono:
+      "https://images.crunchbase.com/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1495225592/eqsylaxabhnkfh1tm3nj.png",
+    Id: 392,
+    ImagenFondo: "",
+    Nombre: "Elumen",
+    OrdenRecomendado: 0,
+    PaginaIntermedia: "",
+    PalabrasClave: "portafolio elumen evidencia",
+    Popularidad: 0,
+    Subcategoria: "Seguridad",
+    TipoIntegracion: "En sitio",
+    URL: "https://miscompetenciastec21.tec.mx",
   },
 ];
 

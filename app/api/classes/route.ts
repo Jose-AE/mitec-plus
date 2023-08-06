@@ -130,11 +130,14 @@ export async function GET(req: NextRequest) {
     });
 
   if (errorMsg.length === 0) {
-    const classesNoDuplicates = resData.filter((c, i, arr) => {
+    let classesNoDuplicates = resData.filter((c, i, arr) => {
       if (
         arr.some(
           (o, j) =>
-            j < i && o.classStartDate === c.classStartDate && o.id === c.id
+            j < i &&
+            o.classStartDate === c.classStartDate &&
+            o.id === c.id &&
+            JSON.stringify(o.days) === JSON.stringify(c.days)
         ) === true
       ) {
         return false;
@@ -142,6 +145,8 @@ export async function GET(req: NextRequest) {
         return true;
       }
     });
+
+    //classesNoDuplicates = resData;
 
     return NextResponse.json(classesNoDuplicates, { status: 200 });
   } else {

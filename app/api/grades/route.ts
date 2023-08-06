@@ -35,6 +35,10 @@ export async function GET(req: NextRequest) {
     ? JSON.parse(Buffer.from(token.JWT.split(".")[1], "base64").toString()).iss
     : "";
 
+  console.log(token?.oAuth);
+  console.log("\n\n\n");
+  console.log(token?.JWT);
+
   await axios
     .get((process.env.API_CLASS_NAMES as string).replace("A0000", userId), {
       headers: {
@@ -57,6 +61,8 @@ export async function GET(req: NextRequest) {
 
         allPeriods.push(data.relationships["ejercicio-academico"].data.id);
       }
+      allPeriods.push(process.env.CURRENT_PERIOD as string); //add current period
+
       resData.periods = Array.from(new Set(allPeriods));
     })
 

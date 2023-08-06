@@ -62,6 +62,7 @@ Puedes comenzar a editar la página modificando `app/page.tsx`. La página se ac
 - `API_CLASS_NAMES` Ruta API de Mitec para los nombres de las clases
 - `API_CLASSES` Ruta API de Mitec para las clases
 - `API_USER` Ruta API de Mitec para el nombre y matrícula
+- `CURRENT_PERIOD` Codigo del periodo actual (eg: 202313)
 
 ## Tecnologías usadas
 

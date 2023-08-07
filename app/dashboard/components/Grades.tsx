@@ -8,6 +8,7 @@ import {
   Select,
   Skeleton,
   Text,
+  Tooltip,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
@@ -34,6 +35,29 @@ export default function Grades() {
   const [periods, setPeriods] = useState<string[]>([]);
   const [period, setPeriod] = useState<string>("");
   const [grades, setGrades] = useState<GradeInterface[]>([]);
+
+  function CalculateGPA(): number {
+    if (grades.length === 0) return 0;
+
+    let totalSum = 0;
+    let gradesLength = 0;
+    const gradesToCalculate = grades.filter((g) => {
+      if (period === "") {
+        return true;
+      } else {
+        return g.period === period;
+      }
+    });
+
+    for (let gradeData of gradesToCalculate) {
+      //if grade is number
+      if (/\d/.test(gradeData.grade)) {
+        totalSum += parseFloat(gradeData.grade);
+        gradesLength += 1;
+      }
+    }
+    return Math.round((totalSum / gradesLength) * 10) / 10;
+  }
 
   useEffect(() => {
     if (getCookie("token")) {
@@ -65,6 +89,15 @@ export default function Grades() {
         <Heading mr="10px" size={{ base: "sm", md: "lg" }}>
           Calificaciones
         </Heading>
+
+        <Tooltip hasArrow label="Promedio">
+          <Badge mr="10px" colorScheme={CalculateGPA() >= 70 ? "green" : "red"}>
+            <Text fontSize={{ base: "12px", md: "16px" }}>
+              {CalculateGPA()}
+            </Text>
+          </Badge>
+        </Tooltip>
+
         <Select
           borderWidth="2px"
           placeholder="Todos los periodos"

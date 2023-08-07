@@ -91,9 +91,9 @@ export default function Grades() {
         </Heading>
 
         <Tooltip hasArrow label="Promedio">
-          <Badge mr="10px" colorScheme={CalculateGPA() >= 70 ? "green" : "red"}>
+          <Badge mr="10px" colorScheme={"green"}>
             <Text fontSize={{ base: "12px", md: "16px" }}>
-              {CalculateGPA()}
+              {CalculateGPA() === 0 ? "NA" : CalculateGPA()}
             </Text>
           </Badge>
         </Tooltip>

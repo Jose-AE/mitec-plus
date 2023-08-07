@@ -181,6 +181,7 @@ export default function Page() {
                   <MdOutlineCookie color="gray.300" />
                 </InputLeftElement>
                 <Input
+                  autoComplete="off"
                   id="cookie_input"
                   onChange={(e) => {
                     setUserCookie(e.target.value);
@@ -220,15 +221,16 @@ export default function Page() {
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
-                    Al ingresar a Mitec con tu cuenta, se crea un tipo de
-                    &quot;credencial digital temporal&quot; (cookie) con datos
-                    básicos como tu matrícula y la fecha de expiración, esta es
-                    usada por Mitec+ para acceder a los servidores de Mitec y
-                    acceder a cosas como tus calificaciones y horarios sin
-                    necesidad de tener que ingresar tu contraseña en Mitec+.
-                    Esta cookie, sólo se guarda en tu navegador y no es
-                    compartida con nadie, expira en 1 hora y es firmada por
-                    Mitec para prevenir falsificaciones.
+                    Al ingresar a la pagina oficial de Mitec con tu cuenta, se
+                    crea un tipo de &quot;credencial digital temporal&quot;
+                    (cookie) con datos básicos como tu matrícula y la fecha de
+                    expiración, esta es usada por Mitec+ para acceder a los
+                    servidores de Mitec y acceder a cosas como tus
+                    calificaciones y horarios sin necesidad de tener que
+                    ingresar tu contraseña en Mitec+. Esta cookie, sólo se
+                    guarda en tu navegador y no es compartida con nadie, expira
+                    en 1 hora y es firmada por Mitec para prevenir
+                    falsificaciones.
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>

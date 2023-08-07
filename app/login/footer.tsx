@@ -90,30 +90,6 @@ export default function Footer() {
           >
             <FaGithub />
           </SocialButton>
-          <SocialButton
-            label={"Twitter"}
-            href={"https://twitter.com/TecdeMonterrey"}
-          >
-            <FaTwitter />
-          </SocialButton>
-          <SocialButton
-            label={"YouTube"}
-            href={"https://www.youtube.com/user/ITESMedu"}
-          >
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton
-            label={"Instagram"}
-            href={"https://www.instagram.com/tecdemonterrey/"}
-          >
-            <FaInstagram />
-          </SocialButton>
-          <SocialButton
-            label={"Facebook"}
-            href={"https://www.facebook.com/TecdeMonterrey/?fref=ts"}
-          >
-            <FaFacebook />
-          </SocialButton>
         </Stack>
       </Container>
     </Flex>

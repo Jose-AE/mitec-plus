@@ -11,6 +11,8 @@ import {
   Image,
   Select,
   Input,
+  Card,
+  CardBody,
 } from "@chakra-ui/react";
 
 export default function Services() {
@@ -19,6 +21,15 @@ export default function Services() {
 
   return (
     <>
+      <Card>
+        <CardBody>
+          <Text>
+            NOTA: Varios servicios dan error al ingresar, esto es por que solo
+            se pueden acceder directamente desde la página oficial de Mitec,
+            pero fueron incluidos para que la lista esté completa.
+          </Text>
+        </CardBody>
+      </Card>
       <Flex gap={5} direction="row" mb="10px">
         <Flex w="50%" direction="column">
           <Text as="b" p="5px">

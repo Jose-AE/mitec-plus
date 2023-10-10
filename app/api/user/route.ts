@@ -74,10 +74,13 @@ export async function GET(req: NextRequest) {
     })
 
     .catch((error) => {
-      errorMsg.push({
-        error: error.message,
-        debugMsg: "Error fetching API_PFP",
-      });
+      if (resData) {
+        resData.pfp = `https://www.treasury.gov.ph/wp-content/uploads/2022/01/male-placeholder-image.jpeg`;
+      }
+      // errorMsg.push({
+      //   error: error.message,
+      //   debugMsg: "Error fetching API_PFP",
+      // });
     });
 
   if (errorMsg.length === 0) {
